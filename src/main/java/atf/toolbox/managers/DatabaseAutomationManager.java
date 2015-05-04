@@ -18,8 +18,7 @@ import org.slf4j.LoggerFactory;
 import com.truemesh.squiggle.SelectQuery;
 
 public class DatabaseAutomationManager {
-	private static Logger log = LoggerFactory
-			.getLogger(DatabaseAutomationManager.class);
+	private static Logger log = LoggerFactory.getLogger(DatabaseAutomationManager.class);
 
 	private Map<String, BasicDataSource> databaseSources;
 	
@@ -30,6 +29,7 @@ public class DatabaseAutomationManager {
 	 * DataSource Collection
 	 */
 	public DatabaseAutomationManager() {
+		log.info("Initializing the DatabaseAutomationManager.");
 		databaseSources = new HashMap<String, BasicDataSource>();
 		databaseSources.put(PRIMARY_DATASOURCE_KEY, createPrimaryDataSource());
 	}

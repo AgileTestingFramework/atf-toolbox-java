@@ -42,7 +42,7 @@ public class WebServiceAutomationManager {
 	 * WebServiceAutomationManager
 	 */
 	public WebServiceAutomationManager() {
-		// webServices = HashBasedTable.create();
+		log.info("Initializing the WebServiceAutomationManager.");
 		webServices = new HashMap<String, WebService>();
 	}
 

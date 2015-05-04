@@ -575,12 +575,18 @@ public class ConfigurationManager {
 	/********************************************************************************/
 	/************* REPORTING  *******************************************************/
 	/********************************************************************************/
-    public Boolean getWebUseJSErrorCollectorWithFirefox()
-    {
+    public Boolean getWebUseJSErrorCollectorWithFirefox() {
     	String key = "atf/reporting/use-jserrorcollector-with-firefox";
     	return getBooleanConfigEntry(key);
     }      
-    
+    public String getBufferedImageSaveLocation() {
+    	String key = "atf/reporting/buffered-image-save-location";
+    	return getStringEntry(key);   	
+    }
+    public String getBufferedImageSaveFormat() {
+    	String key = "atf/reporting/buffered-image-save-format";
+    	return getStringEntry(key);   	
+    }
 	/********************************************************************************/
 	/************* LOCALIZATION  ****************************************************/
 	/********************************************************************************/

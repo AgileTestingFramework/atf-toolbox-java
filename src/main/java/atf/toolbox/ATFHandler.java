@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import atf.toolbox.managers.ConfigurationManager;
 import atf.toolbox.managers.DatabaseAutomationManager;
 import atf.toolbox.managers.MobileAutomationManager;
+import atf.toolbox.managers.ScreenImageAutomationManager;
 import atf.toolbox.managers.WebAutomationManager;
 import atf.toolbox.managers.WebServiceAutomationManager;
 
@@ -131,6 +132,29 @@ public class ATFHandler {
 		return mobileAutomationInstance;
     }
     
+    
+    private volatile ScreenImageAutomationManager screenImageAutomationInstance;
+    
+	/**
+	 * getScreenImageAutomation
+	 * Used to perform screen and image automation tasks
+	 */
+    public ScreenImageAutomationManager getScreenImageAutomation()
+    {
+		if (screenImageAutomationInstance == null) {
+			synchronized (ScreenImageAutomationManager.class) {
+				ScreenImageAutomationManager inst = screenImageAutomationInstance;
+				if (inst == null) {
+					synchronized (ScreenImageAutomationManager.class) {
+						screenImageAutomationInstance = new ScreenImageAutomationManager();
+						log.info("Created new instance of the Screen Image Automation Manager.");
+					}
+				}
+			}
+        }
+		return screenImageAutomationInstance;
+    }
+    
     /**
      * teardown
      * Will cleanup any resources used within the instance of this ATFHandler
@@ -169,6 +193,11 @@ public class ATFHandler {
     	if (mobileAutomationInstance != null) {
     		mobileAutomationInstance.teardown();
     		mobileAutomationInstance = null;
+    	}
+    	
+    	if (screenImageAutomationInstance != null) {
+    		screenImageAutomationInstance.teardown();
+    		screenImageAutomationInstance = null;
     	}
     }
 }

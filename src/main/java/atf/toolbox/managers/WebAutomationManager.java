@@ -42,6 +42,7 @@ public class WebAutomationManager {
    
     public WebAutomationManager()
     {
+    	log.info("Initializing the WebAutomationManager.");
         webDriver = webDriverSetup();
     }
 

@@ -18,8 +18,7 @@ import org.slf4j.LoggerFactory;
 
 public class MobileAutomationManager {
 
-	private static Logger log = LoggerFactory
-			.getLogger(MobileAutomationManager.class);
+	private static Logger log = LoggerFactory.getLogger(MobileAutomationManager.class);
 
 	private AppiumDriver mobileDriver;
 
@@ -28,7 +27,7 @@ public class MobileAutomationManager {
 	}
 
 	public MobileAutomationManager() {
-		  
+		log.info("Initializing the MobileAutomationManager.");
 		if (ConfigurationManager.getInstance().getMobileAppiumStartNodeServer()) {
 			  startAppiumServer(); 
 		  }
