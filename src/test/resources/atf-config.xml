@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- test-config.xml -->
+<!-- Used for configuration of test environment -->
+<configuration>
+    <system />
+    <!--<xml fileName="sample-test-android-environment.xml"/> -->
+    <!--<xml fileName="sample-test-iphone-environment.xml"/>-->
+    <xml fileName="sample-nexus-hardware-test-environment.xml" />
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
