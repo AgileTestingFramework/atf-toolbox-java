@@ -35,6 +35,10 @@ public class ScreenImageAutomationManager {
 	public void saveBufferedImage(String fileName, BufferedImage imageToSave) {
 		String filePath = ConfigurationManager.getInstance().getBufferedImageSaveLocation()+fileName;
 		File imgFile = new File(filePath);
+		
+		if (!imgFile.exists()) {
+			imgFile.mkdirs();
+		}
 
         try {
 			ImageIO.write(imageToSave, ConfigurationManager.getInstance().getBufferedImageSaveFormat(), imgFile);

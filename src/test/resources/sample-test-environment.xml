@@ -135,7 +135,7 @@
 		<reporting>
 			<!-- report file locations, switches to turn different reporting on\off -->
 			<use-jserrorcollector-with-firefox>false</use-jserrorcollector-with-firefox>
-			<buffered-image-save-location></buffered-image-save-location>
+			<buffered-image-save-location>C:\SavedFiles\</buffered-image-save-location>
 			<buffered-image-save-format>PNG</buffered-image-save-format>
 		</reporting>
 

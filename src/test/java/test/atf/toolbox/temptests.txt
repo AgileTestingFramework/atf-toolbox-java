@@ -4,6 +4,29 @@ package test.atf.toolbox;
 public class ATFHandlerTest {
 
 	@Test
+	public void test() {
+		ClassLoader classLoader = getClass().getClassLoader();
+        try {
+        	File file = new File(classLoader.getResource("Eventbudget.pdf").getFile());
+			Desktop.getDesktop().open(file);
+			
+			//Thread.sleep(5000); // wait for the report to generate
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+
+        File imagePatternFile = new File(classLoader.getResource("patterns/EventBudget_EstimatedPiePattern.PNG").getFile());
+        
+        Target imageTarget = new ImageTarget(imagePatternFile);
+        
+        ScreenRegion screenRegionToSearch = ATFHandler.getInstance().getScreenImageAutomation().getFullScreen().wait(imageTarget, 50000);
+        
+        ATFHandler.getInstance().getScreenImageAutomation().saveBufferedImage("myfiletosave.png", screenRegionToSearch.capture());
+	}
+	
+	@Test
 	public void sikuliTest() throws IOException, InterruptedException {
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("Eventbudget.pdf")
