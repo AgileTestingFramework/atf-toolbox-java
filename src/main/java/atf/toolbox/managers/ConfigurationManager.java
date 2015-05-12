@@ -135,7 +135,7 @@ public class ConfigurationManager {
      * @param xPathKey - Key in XPath format to locate in loaded config file
      * @return - integer entry from config file. Will return 0 if not found.
      */
-    public int getIntEntry(String xPathKey)
+    public Integer getIntEntry(String xPathKey)
     {
     	try {
         	if (AllConfiguration.containsKey(xPathKey)) return Integer.parseInt(AllConfiguration.getString(xPathKey));
@@ -143,8 +143,8 @@ public class ConfigurationManager {
     	}
     	catch (Exception e)
     	{
-    		log.error("Unable to integer parse configuration entry:"+xPathKey);
-    		return 0;
+    		log.warn("Unable to integer parse configuration entry:"+xPathKey);
+    		return null;
     	}
     }
     
@@ -241,7 +241,7 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/unexpected-alert-behavior";
     	return getStringEntry(key);
     }    
-    public int getElementScrollBehavior() {
+    public Integer getElementScrollBehavior() {
     	String key = "atf/desired-capabilities/element-scroll-behavior";
     	return getIntEntry(key);
     }     
@@ -289,7 +289,7 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/grid-selenium-protocol";
     	return getStringEntry(key);
     }     
-    public int getGridMaxInstances() {
+    public Integer getGridMaxInstances() {
     	String key = "atf/desired-capabilities/grid-max-instances";
     	return getIntEntry(key);
     }    
@@ -320,7 +320,7 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/opera/autostart";
     	return getBooleanConfigEntry(key);
     }    
-    public int getOperaDisplay() {
+    public Integer getOperaDisplay() {
     	String key = "atf/desired-capabilities/opera/display";
     	return getIntEntry(key);
     }    
@@ -336,7 +336,7 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/opera/launcher";
     	return getStringEntry(key);
     }    
-    public int getOperaPort() {
+    public Integer getOperaPort() {
     	String key = "atf/desired-capabilities/opera/port";
     	return getIntEntry(key);
     }    
@@ -420,7 +420,7 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/firefox/webdriver-load-strategy";
     	return getStringEntry(key);
     }
-    public int getFirefoxPort() {
+    public Integer getFirefoxPort() {
     	String key = "atf/desired-capabilities/firefox/webdriver-port";
     	return getIntEntry(key);
     }
@@ -450,7 +450,7 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/ie/require-window-focus";
     	return getBooleanConfigEntry(key);
     }     
-    public int getIEBrowserAttachTimeout() {
+    public Integer getIEBrowserAttachTimeout() {
     	String key = "atf/desired-capabilities/ie/browser-attach-timeout";
     	return getIntEntry(key);
     }    
@@ -532,7 +532,7 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/safari/skip-extension-installation";
     	return getBooleanConfigEntry(key);
     }   
-    public int getSafariPort() {
+    public Integer getSafariPort() {
     	String key = "atf/desired-capabilities/safari/port";
     	return getIntEntry(key);
     }
@@ -681,7 +681,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/common/browserName";
     	return getStringEntry(key);
 	}
-	public int getMobileNewCommandTimeout() {
+	public Integer getMobileNewCommandTimeout() {
 		String key = "atf/mobile/common/newCommandTimeout";
     	return getIntEntry(key);
 	}	
@@ -747,7 +747,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/appWaitPackage";
 		return getStringEntry(key);
 	}
-	public int getMobileDeviceReadyTimeout() {	
+	public Integer getMobileDeviceReadyTimeout() {	
 		String key = "atf/mobile/android/deviceReadyTimeout";
 		return getIntEntry(key);
 	}
@@ -759,11 +759,11 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/enablePerformanceLogging";
 		return getBooleanConfigEntry(key);
 	}
-	public int getMobileAndroidDeviceReadyTimeout() {
+	public Integer getMobileAndroidDeviceReadyTimeout() {
 		String key = "atf/mobile/android/androidDeviceReadyTimeout";
 		return getIntEntry(key);
 	}	
-	public int getMobileAndroidDeviceSocket() {
+	public Integer getMobileAndroidDeviceSocket() {
 		String key = "atf/mobile/android/androidDeviceSocket";
 		return getIntEntry(key);
 	}	
@@ -771,11 +771,11 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/avd";
 		return getStringEntry(key);
 	}
-	public int getMobileAVDLaunchTimeout() {
+	public Integer getMobileAVDLaunchTimeout() {
 		String key = "atf/mobile/android/avdLaunchTimeout";
 		return getIntEntry(key);
 	}
-	public int getMobileAVDReadyTimeout() {
+	public Integer getMobileAVDReadyTimeout() {
 		String key = "atf/mobile/android/avdReadyTimeout";
 		return getIntEntry(key);
 	}
@@ -807,7 +807,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/chromedriverExecutable";
 		return getStringEntry(key);
 	}	
-	public int getMobileAutoWebviewTimeout() {
+	public Integer getMobileAutoWebviewTimeout() {
 		String key = "atf/mobile/android/autoWebviewTimeout";
 		return getIntEntry(key);
 	}
@@ -860,7 +860,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/bundleId";
 		return getStringEntry(key);
 	}
-	public int getMobileLaunchTimeout() {	
+	public Integer getMobileLaunchTimeout() {	
 		String key = "atf/mobile/ios/launchTimeout";
 		return getIntEntry(key);
 	}
@@ -916,7 +916,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/processArguments";
 		return getStringEntry(key);
 	}
-	public int getMobileInterKeyDelay() {	
+	public Integer getMobileInterKeyDelay() {	
 		String key = "atf/mobile/ios/interKeyDelay";
 		return getIntEntry(key);
 	}
@@ -928,7 +928,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/sendKeyStrategy";
 		return getStringEntry(key);
 	}
-	public int getMobileScreentimeWaitTimeout() {	
+	public Integer getMobileScreentimeWaitTimeout() {	
 		String key = "atf/mobile/ios/screenshotWaitTimeout";
 		return getIntEntry(key);
 	}

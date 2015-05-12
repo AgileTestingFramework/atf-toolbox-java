@@ -11,7 +11,7 @@
 		<desired-capabilities>
 			<browser-name>firefox</browser-name>
 			<browser-version>31.0</browser-version>
-			<browser-download-path>C:\Program Files (x86)\Mozilla Firefox\
+			<browser-download-path>C:\Program Files (x86)\Mozilla Firefox\31.0\firefox.exe
 			</browser-download-path>
 			<platform></platform>
 			<takes-screenshot>true</takes-screenshot>

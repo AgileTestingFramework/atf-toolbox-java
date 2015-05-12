@@ -93,9 +93,10 @@ public class WebAutomationManager {
             profile.setPreference("webdriver.log.driver", ConfigurationManager.getInstance().getFirefoxLogDriverLevel());
             profile.setPreference("webdriver.log.file", ConfigurationManager.getInstance().getFirefoxLogFile());
             profile.setPreference("webdriver.load.strategy", ConfigurationManager.getInstance().getFirefoxLoadStrategy());
-            profile.setPreference("webdriver_firefox_port", ConfigurationManager.getInstance().getFirefoxPort());
-            capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+            if (ConfigurationManager.getInstance().getFirefoxPort() !=null)
+            	profile.setPreference("webdriver_firefox_port", ConfigurationManager.getInstance().getFirefoxPort());
             
+            capabilities.setCapability(FirefoxDriver.PROFILE, profile);
             capabilities.setCapability("mode", ConfigurationManager.getInstance());
             capabilities.setCapability("captureNetworkTraffic", ConfigurationManager.getInstance());
             capabilities.setCapability("addCustomRequestHeaders", ConfigurationManager.getInstance());
@@ -176,11 +177,13 @@ public class WebAutomationManager {
         	capabilities.setCapability("opera.product", ConfigurationManager.getInstance().getOperaProduct());
         	capabilities.setCapability("opera.no_quit", ConfigurationManager.getInstance().getOperaNoQuit());
         	capabilities.setCapability("opera.autostart", ConfigurationManager.getInstance().getOperaAutoStart());
-        	capabilities.setCapability("opera.display", ConfigurationManager.getInstance().getOperaDisplay());
+        	if (ConfigurationManager.getInstance().getOperaDisplay() != null)
+        		capabilities.setCapability("opera.display", ConfigurationManager.getInstance().getOperaDisplay());
         	capabilities.setCapability("opera.idle", ConfigurationManager.getInstance().getOperaIdle());
         	capabilities.setCapability("opera.profile", ConfigurationManager.getInstance().getOperaProfileDirectory());
         	capabilities.setCapability("opera.launcher", ConfigurationManager.getInstance().getOperaLauncher());
-        	capabilities.setCapability("opera.port", ConfigurationManager.getInstance().getOperaPort());
+        	if (ConfigurationManager.getInstance().getOperaPort() != null)
+        		capabilities.setCapability("opera.port", ConfigurationManager.getInstance().getOperaPort());
         	capabilities.setCapability("opera.host", ConfigurationManager.getInstance().getOperaHost());
         	capabilities.setCapability("opera.arguments", ConfigurationManager.getInstance().getOperaArguments());
         	capabilities.setCapability("opera.logging.file", ConfigurationManager.getInstance().getOperaLoggingFile());
@@ -262,8 +265,29 @@ public class WebAutomationManager {
     }
     
     private DesiredCapabilities setCommonCapabilities(DesiredCapabilities capabilities) {
+    	capabilities.setCapability("platform", Platform.ANY);
+    	
+    	if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("windows")) {
+            capabilities.setCapability("platform", Platform.WINDOWS);
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("win8")) {
+    		capabilities.setCapability("platform", Platform.WIN8);	
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("win81")) {
+    		capabilities.setCapability("platform", Platform.WIN8_1);    		
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("linux")) {
+    		capabilities.setCapability("platform", Platform.LINUX);
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("mac")) {
+    		capabilities.setCapability("platform", Platform.MAC);
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("XP")) {
+    		capabilities.setCapability("platform", Platform.XP);
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("unix")) {
+    		capabilities.setCapability("platform", Platform.UNIX);
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("Vista")) {
+    		capabilities.setCapability("platform", Platform.VISTA);
+    	} else if (ConfigurationManager.getInstance().getPlatform().toLowerCase().contains("android")) {
+    		capabilities.setCapability("platform", Platform.ANDROID);
+    	}
+   
         capabilities.setCapability("browserVersion", ConfigurationManager.getInstance().getWebBrowserVersion());
-        capabilities.setCapability("platform", ConfigurationManager.getInstance().getPlatform());
         capabilities.setCapability("takesScreenshot", ConfigurationManager.getInstance().getTakesScreenshot());
         capabilities.setCapability("handlesAlerts", ConfigurationManager.getInstance().getHandlesAlerts());
         capabilities.setCapability("cssSelectorsEnabled", ConfigurationManager.getInstance().getCSSSelectorsEnabled());
@@ -277,7 +301,8 @@ public class WebAutomationManager {
         capabilities.setCapability("rotatable", ConfigurationManager.getInstance().getRotatable());
         capabilities.setCapability("nativeEvents", ConfigurationManager.getInstance().getNativeEvents());
         capabilities.setCapability("unexpectedAlertBehaviour", ConfigurationManager.getInstance().getUnexpectedAlertBehavior());
-        capabilities.setCapability("elementScrollBehavior", ConfigurationManager.getInstance().getElementScrollBehavior());
+        if (ConfigurationManager.getInstance().getElementScrollBehavior() != null)
+        	capabilities.setCapability("elementScrollBehavior", ConfigurationManager.getInstance().getElementScrollBehavior());
 
         // JSON Proxy
         capabilities.setCapability("proxyType", ConfigurationManager.getInstance().getJSONProxyType());
