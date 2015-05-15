@@ -5,17 +5,16 @@
 	<artifactId>toolbox</artifactId>
 	<version>1.0.0</version>
 	<name>Agile Testing Framework Toolbox</name>
-	<description>Automation Testing Framework Toolbox
-Provides simple automation.</description>
+	<description>Automation Testing Framework Toolbox Provides simple automation.</description>
 	<repositories>
 		<!-- USE the following to install any other 3rd party dependency that doesn't 
 			have a public maven C:\Projects\workspace\atf-toolbox\toolbox>mvn install:install-file 
-			-DlocalReposi toryPath=repo -DcreateChecksum=true -Dpackaging=jar -Dfile=C:\Projects\workspace 
+			-DlocalRepositoryPath=src\main\resources\repo -DcreateChecksum=true -Dpackaging=jar -Dfile=C:\Projects\workspace 
 			\atf-toolbox\toolbox\src\main\resources\META-INF\lib\JSErrorCollector-0.6.jar 
 			-D groupId=net.jsourcerer.webdriver -DartifactId=JSErrorCollector -Dversion=0.6 -->
 		<repository>
 			<id>repo</id>
-			<url>file://${project.basedir}/repo</url>
+			<url>file://${project.basedir}/src/main/resources/repo</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -154,6 +153,11 @@ Provides simple automation.</description>
 			<artifactId>scribe</artifactId>
 			<version>1.3.5</version>
 		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -192,6 +196,7 @@ Provides simple automation.</description>
 		<fest.version>2.0M10</fest.version>
 		<phantomjsdriver.version>1.2.0</phantomjsdriver.version>
 		<rest.assured.version>2.4.1</rest.assured.version>
+		<jbehave.version>3.9.5</jbehave.version>
 	</properties>
 	<url>http://www.agiletestingframework.com</url>
 </project>
