@@ -4,16 +4,19 @@
 	<groupId>atf</groupId>
 	<artifactId>toolbox</artifactId>
 	<version>1.0.0</version>
+	<packaging>jar</packaging>
 	<name>Agile Testing Framework Toolbox</name>
 	<description>Automation Testing Framework Toolbox Provides simple automation.</description>
-	<repositories>
-		<!-- USE the following to install any other 3rd party dependency that doesn't 
-			have a public maven C:\Projects\workspace\atf-toolbox\toolbox>mvn install:install-file -DlocalRepositoryPath=repo -DcreateChecksum=true -Dpackaging=jar -Dfile=JSErrorCollector-0.6.jar-DgroupId=net.jsourcerer.webdriver -DartifactId=JSErrorCollector -Dversion=0.6 -->
-		<repository>
-			<id>repo</id>
-			<url>file://${basedir}/repo</url>
-		</repository>
-	</repositories>
+	<url>http://www.agiletestingframework.com</url>
+	
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -101,11 +104,6 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
-			<groupId>net.jsourcerer.webdriver</groupId>
-			<artifactId>JSErrorCollector</artifactId>
-			<version>0.6</version>
-		</dependency>
-		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.0.13</version>
@@ -124,11 +122,6 @@
 			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
 			<version>1.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.airbnb.squiggle</groupId>
-			<artifactId>squiggle</artifactId>
-			<version>3.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sikuli</groupId>
@@ -156,84 +149,6 @@
 			<version>${jbehave.version}</version>
 		</dependency>
 	</dependencies>
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<version>2.5</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.5.1</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-
-
- 		<plugin> 
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <executions>
-                <execution>
-                	<id>copy</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>copy</goal>
-                    </goals>
-                    <configuration>
-                    	<artifactItems>
-                    		<artifactItem>
-								<groupId>com.airbnb.squiggle</groupId>
-								<artifactId>squiggle</artifactId>
-								<version>3.0.1</version>
-								<type>jar</type>
-                    		</artifactItem>
-                    		<artifactItem>
-								<groupId>net.jsourcerer.webdriver</groupId>
-								<artifactId>JSErrorCollector</artifactId>
-								<version>0.6</version>
-								<type>jar</type>
-                    		</artifactItem>
-                    	</artifactItems>
-                        <outputDirectory>${project.build.directory}/classes/lib</outputDirectory>                       
-                        <overWriteReleases>false</overWriteReleases>
-                        <overWriteSnapshots>false</overWriteSnapshots>
-                        <overWriteIfNewer>true</overWriteIfNewer>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <addClasspath>false</addClasspath>
-                    </manifest>
-                    <manifestEntries>
-                    	<Class-Path>lib/JSErrorCollector-0.6.jar lib/squiggle-3.0.1.jar</Class-Path>
-                    </manifestEntries>
-                </archive>
-            </configuration> 
-        </plugin>
-
-		</plugins>
-	</build>
 	<properties>
 		<testng.version>6.8.5</testng.version>
 		<slf4j.version>1.7.5</slf4j.version>
@@ -246,5 +161,4 @@
 		<rest.assured.version>2.4.1</rest.assured.version>
 		<jbehave.version>3.9.5</jbehave.version>
 	</properties>
-	<url>http://www.agiletestingframework.com</url>
 </project>
