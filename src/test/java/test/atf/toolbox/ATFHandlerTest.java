@@ -2,18 +2,20 @@ package test.atf.toolbox;
 
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static com.jayway.restassured.RestAssured.*;
-import static com.jayway.restassured.matcher.RestAssuredMatchers.*;
-import static org.hamcrest.Matchers.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Test;
 
-import com.jayway.restassured.path.xml.XmlPath;
-import com.jayway.restassured.path.xml.element.NodeChildren;
+import atf.toolbox.ATFHandler;
+import atf.toolbox.managers.ConfigurationManager;
 
 
 
@@ -21,5 +23,4 @@ public class ATFHandlerTest {
 
 	// Placeholder class to exercise the framework during development DO NOT REMOVE !!!
 
-	
 }

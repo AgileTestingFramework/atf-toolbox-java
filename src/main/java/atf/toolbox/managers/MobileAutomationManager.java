@@ -72,79 +72,150 @@ public class MobileAutomationManager {
 
 	private void setCommonCapabilities(DesiredCapabilities caps) {
 		// COMMON CAPABILITIES
-		caps.setCapability("appiumVersion", ConfigurationManager.getInstance().getMobileAppiumVersion());
-		caps.setCapability("automationName", ConfigurationManager.getInstance().getMobileAutomationName());
-		caps.setCapability("platformName", ConfigurationManager.getInstance().getMobileBrowserPlatform());
-		caps.setCapability("platformVersion", ConfigurationManager.getInstance().getMobilePlatformVersion());
-		caps.setCapability("deviceName", ConfigurationManager.getInstance().getMobileDeviceName());
-		caps.setCapability("deviceType", ConfigurationManager.getInstance().getMobileDeviceType());
-		caps.setCapability("app", ConfigurationManager.getInstance().getMobileApplication());
-		caps.setCapability("browserName", ConfigurationManager.getInstance().getMobileBrowserName());
-		caps.setCapability("newCommandTimeout", ConfigurationManager.getInstance().getMobileNewCommandTimeout());
-		caps.setCapability("autoLaunch", ConfigurationManager.getInstance().getMobileAutoLaunch());
-		caps.setCapability("language", ConfigurationManager.getInstance().getMobileLanguage());
-		caps.setCapability("locale", ConfigurationManager.getInstance().getMobileLocale());
-		caps.setCapability("udid", ConfigurationManager.getInstance().getMobileUniqueID());
-		caps.setCapability("orientation", ConfigurationManager.getInstance().getMobileOrientation());
-		caps.setCapability("autoWebview", ConfigurationManager.getInstance().getMobileAutoWebView());
-		caps.setCapability("noReset", ConfigurationManager.getInstance().getMobileNoResetAppState());
-		caps.setCapability("fullReset", ConfigurationManager.getInstance().getMobileFullReset());
+		if (ConfigurationManager.getInstance().getMobileAppiumVersion().length() != 0)
+			caps.setCapability("appiumVersion", ConfigurationManager.getInstance().getMobileAppiumVersion());
+		if (ConfigurationManager.getInstance().getMobileAutomationName().length() != 0)
+			caps.setCapability("automationName", ConfigurationManager.getInstance().getMobileAutomationName());
+		if (ConfigurationManager.getInstance().getMobileBrowserPlatform().length() != 0)
+			caps.setCapability("platformName", ConfigurationManager.getInstance().getMobileBrowserPlatform());
+		if (ConfigurationManager.getInstance().getMobilePlatformVersion().length() != 0)
+			caps.setCapability("platformVersion", ConfigurationManager.getInstance().getMobilePlatformVersion());
+		if (ConfigurationManager.getInstance().getMobileDeviceName().length() != 0)
+			caps.setCapability("deviceName", ConfigurationManager.getInstance().getMobileDeviceName());
+		if (ConfigurationManager.getInstance().getMobileDeviceType().length() != 0)
+			caps.setCapability("deviceType", ConfigurationManager.getInstance().getMobileDeviceType());
+		if (ConfigurationManager.getInstance().getMobileApplication().length() != 0)
+			caps.setCapability("app", ConfigurationManager.getInstance().getMobileApplication());
+		if (ConfigurationManager.getInstance().getMobileBrowserName().length() != 0)
+			caps.setCapability("browserName", ConfigurationManager.getInstance().getMobileBrowserName());
+		if (ConfigurationManager.getInstance().getMobileNewCommandTimeout() != null)
+			caps.setCapability("newCommandTimeout", ConfigurationManager.getInstance().getMobileNewCommandTimeout());
+		if (ConfigurationManager.getInstance().getMobileLanguage().length() != 0)
+			caps.setCapability("language", ConfigurationManager.getInstance().getMobileLanguage());
+		if (ConfigurationManager.getInstance().getMobileLocale().length() != 0)
+			caps.setCapability("locale", ConfigurationManager.getInstance().getMobileLocale());
+		if (ConfigurationManager.getInstance().getMobileUDID().length() != 0)
+			caps.setCapability("udid", ConfigurationManager.getInstance().getMobileUDID());
+		if (ConfigurationManager.getInstance().getMobileOrientation().length() != 0)
+			caps.setCapability("orientation", ConfigurationManager.getInstance().getMobileOrientation());
+		if (ConfigurationManager.getInstance().getMobileAutoLaunch() != null)
+			caps.setCapability("autoLaunch", ConfigurationManager.getInstance().getMobileAutoLaunch());
+		if (ConfigurationManager.getInstance().getMobileAutoWebView() != null)
+			caps.setCapability("autoWebview", ConfigurationManager.getInstance().getMobileAutoWebView());
+		if (ConfigurationManager.getInstance().getMobileNoResetAppState() != null)
+			caps.setCapability("noReset", ConfigurationManager.getInstance().getMobileNoResetAppState());
+		if (ConfigurationManager.getInstance().getMobileFullReset() != null)
+			caps.setCapability("fullReset", ConfigurationManager.getInstance().getMobileFullReset());
 	}
 
-	private void setAndroidCapabilities(DesiredCapabilities caps){		
-		caps.setCapability("appActivity", ConfigurationManager.getInstance().getMobileApplicationActivity());
-		caps.setCapability("appPackage", ConfigurationManager.getInstance().getMobileApplicationPackage());
-		caps.setCapability("appWaitActivity", ConfigurationManager.getInstance().getMobileApplicationWaitActivity());
-		caps.setCapability("appWaitPackage", ConfigurationManager.getInstance().getMobileApplicationWaitPackage());
-		caps.setCapability("deviceReadyTimeout", ConfigurationManager.getInstance().getMobileDeviceReadyTimeout());
-		caps.setCapability("androidCoverage", ConfigurationManager.getInstance().getMobileAndroidCoverage());
-		caps.setCapability("enablePerformanceLogging", ConfigurationManager.getInstance().getMobileEnablePerformanceLogging());
-		caps.setCapability("androidDeviceReadyTimeout", ConfigurationManager.getInstance().getMobileAndroidDeviceReadyTimeout());
-		caps.setCapability("androidDeviceSocket", ConfigurationManager.getInstance().getMobileAndroidDeviceSocket());
-		caps.setCapability("avd", ConfigurationManager.getInstance().getMobileAVD());
-		caps.setCapability("avdLaunchTimeout", ConfigurationManager.getInstance().getMobileAVDLaunchTimeout());
-		caps.setCapability("avdReadyTimeout", ConfigurationManager.getInstance().getMobileAVDReadyTimeout());
-		caps.setCapability("avdArgs", ConfigurationManager.getInstance().getMobileAVDArguments());
-		caps.setCapability("useKeystore", ConfigurationManager.getInstance().getMobileUseKeystore());
-		caps.setCapability("keystorePath", ConfigurationManager.getInstance().getMobileKeystorePath());
-		caps.setCapability("keystorePassword", ConfigurationManager.getInstance().getMobileKeystorePassword());
-		caps.setCapability("keyAlias", ConfigurationManager.getInstance().getMobileKeyAlias());
-		caps.setCapability("keyPassword", ConfigurationManager.getInstance().getMobileKeyPassword());
-		caps.setCapability("chromedriverExecutable", ConfigurationManager.getInstance().getMobileChromeDriverExecutable());
-		caps.setCapability("autoWebviewTimeout", ConfigurationManager.getInstance().getMobileAutoWebviewTimeout());
-		caps.setCapability("intentAction", ConfigurationManager.getInstance().getMobileIntentAction());
-		caps.setCapability("intentCategory", ConfigurationManager.getInstance().getMobileIntentCategory());
-		caps.setCapability("intentFlags", ConfigurationManager.getInstance().getMobileIntentFlags());
-		caps.setCapability("optionalIntentArguments", ConfigurationManager.getInstance().getMobileOptionalIntentArguments());
-		caps.setCapability("stopAppOnReset", ConfigurationManager.getInstance().getMobileStopApplicationOnReset());
-		caps.setCapability("unicodeKeyboard", ConfigurationManager.getInstance().getMobileEnableUnicodeInput());
-		caps.setCapability("resetKeyboard", ConfigurationManager.getInstance().getMobileResetKeyboard());
-		caps.setCapability("noSign", ConfigurationManager.getInstance().getMobileNoSigning());
-		caps.setCapability("ignoreUnimportantViews", ConfigurationManager.getInstance().getMobileIgnoreUnimportantViews());	
+	private void setAndroidCapabilities(DesiredCapabilities caps){
+		if (ConfigurationManager.getInstance().getMobileApplicationActivity().length() != 0)
+			caps.setCapability("appActivity", ConfigurationManager.getInstance().getMobileApplicationActivity());
+		if (ConfigurationManager.getInstance().getMobileApplicationPackage().length() !=0)
+			caps.setCapability("appPackage", ConfigurationManager.getInstance().getMobileApplicationPackage());
+		if (ConfigurationManager.getInstance().getMobileApplicationWaitActivity().length() != 0)
+			caps.setCapability("appWaitActivity", ConfigurationManager.getInstance().getMobileApplicationWaitActivity());
+		if (ConfigurationManager.getInstance().getMobileApplicationWaitPackage().length() != 0)
+			caps.setCapability("appWaitPackage", ConfigurationManager.getInstance().getMobileApplicationWaitPackage());
+		if (ConfigurationManager.getInstance().getMobileDeviceReadyTimeout() != null)
+			caps.setCapability("deviceReadyTimeout", ConfigurationManager.getInstance().getMobileDeviceReadyTimeout());
+		if (ConfigurationManager.getInstance().getMobileAndroidCoverage() != null)
+			caps.setCapability("androidCoverage", ConfigurationManager.getInstance().getMobileAndroidCoverage());
+		if (ConfigurationManager.getInstance().getMobileEnablePerformanceLogging() != null)
+			caps.setCapability("enablePerformanceLogging", ConfigurationManager.getInstance().getMobileEnablePerformanceLogging());
+		if (ConfigurationManager.getInstance().getMobileAndroidDeviceReadyTimeout() != null)
+			caps.setCapability("androidDeviceReadyTimeout", ConfigurationManager.getInstance().getMobileAndroidDeviceReadyTimeout());
+		if (ConfigurationManager.getInstance().getMobileAndroidDeviceSocket() != null)
+			caps.setCapability("androidDeviceSocket", ConfigurationManager.getInstance().getMobileAndroidDeviceSocket());
+		if (ConfigurationManager.getInstance().getMobileAVD().length() != 0)
+			caps.setCapability("avd", ConfigurationManager.getInstance().getMobileAVD());
+		if (ConfigurationManager.getInstance().getMobileAVDLaunchTimeout() != null)
+			caps.setCapability("avdLaunchTimeout", ConfigurationManager.getInstance().getMobileAVDLaunchTimeout());
+		if (ConfigurationManager.getInstance().getMobileAVDReadyTimeout() != null)
+			caps.setCapability("avdReadyTimeout", ConfigurationManager.getInstance().getMobileAVDReadyTimeout());
+		if (ConfigurationManager.getInstance().getMobileAVDArguments().length() != 0)
+			caps.setCapability("avdArgs", ConfigurationManager.getInstance().getMobileAVDArguments());
+		
+		if (ConfigurationManager.getInstance().getMobileUseKeystore() != null && ConfigurationManager.getInstance().getMobileUseKeystore())
+		{
+			caps.setCapability("useKeystore", ConfigurationManager.getInstance().getMobileUseKeystore());
+			if (ConfigurationManager.getInstance().getMobileKeystorePath().length() != 0)
+				caps.setCapability("keystorePath", ConfigurationManager.getInstance().getMobileKeystorePath());
+			if (ConfigurationManager.getInstance().getMobileKeystorePassword().length() != 0)
+				caps.setCapability("keystorePassword", ConfigurationManager.getInstance().getMobileKeystorePassword());
+		}
+		
+		if (ConfigurationManager.getInstance().getMobileKeyAlias().length() != 0)
+			caps.setCapability("keyAlias", ConfigurationManager.getInstance().getMobileKeyAlias());
+		if (ConfigurationManager.getInstance().getMobileKeyPassword().length() != 0)
+			caps.setCapability("keyPassword", ConfigurationManager.getInstance().getMobileKeyPassword());
+		if (ConfigurationManager.getInstance().getMobileChromeDriverExecutable().length() != 0)
+			caps.setCapability("chromedriverExecutable", ConfigurationManager.getInstance().getMobileChromeDriverExecutable());
+		if (ConfigurationManager.getInstance().getMobileAutoWebviewTimeout() != null)
+			caps.setCapability("autoWebviewTimeout", ConfigurationManager.getInstance().getMobileAutoWebviewTimeout());
+		if (ConfigurationManager.getInstance().getMobileIntentAction().length() != 0)
+			caps.setCapability("intentAction", ConfigurationManager.getInstance().getMobileIntentAction());
+		if (ConfigurationManager.getInstance().getMobileIntentCategory().length() != 0)
+			caps.setCapability("intentCategory", ConfigurationManager.getInstance().getMobileIntentCategory());
+		if (ConfigurationManager.getInstance().getMobileIntentFlags().length() != 0)
+			caps.setCapability("intentFlags", ConfigurationManager.getInstance().getMobileIntentFlags());
+		if (ConfigurationManager.getInstance().getMobileOptionalIntentArguments().length() != 0)
+			caps.setCapability("optionalIntentArguments", ConfigurationManager.getInstance().getMobileOptionalIntentArguments());
+		if (ConfigurationManager.getInstance().getMobileStopApplicationOnReset() != null)
+			caps.setCapability("stopAppOnReset", ConfigurationManager.getInstance().getMobileStopApplicationOnReset());
+		if (ConfigurationManager.getInstance().getMobileEnableUnicodeInput() != null)
+			caps.setCapability("unicodeKeyboard", ConfigurationManager.getInstance().getMobileEnableUnicodeInput());
+		if (ConfigurationManager.getInstance().getMobileResetKeyboard() != null)
+			caps.setCapability("resetKeyboard", ConfigurationManager.getInstance().getMobileResetKeyboard());
+		if (ConfigurationManager.getInstance().getMobileNoSigning() != null)
+			caps.setCapability("noSign", ConfigurationManager.getInstance().getMobileNoSigning());
+		if (ConfigurationManager.getInstance().getMobileIgnoreUnimportantViews() != null)
+			caps.setCapability("ignoreUnimportantViews", ConfigurationManager.getInstance().getMobileIgnoreUnimportantViews());	
 	}
 	
 	private void setIOSCapabilities(DesiredCapabilities caps) {
-		caps.setCapability("calendarFormat", ConfigurationManager.getInstance().getMobileCalendarFormat());
-		caps.setCapability("bundleId", ConfigurationManager.getInstance().getMobileBundleId());
-		caps.setCapability("launchTimeout", ConfigurationManager.getInstance().getMobileLaunchTimeout());
-		caps.setCapability("locationServicesEnabled", ConfigurationManager.getInstance().getMobileLocationServiceEnabled());
-		caps.setCapability("locationServicesAuthorized", ConfigurationManager.getInstance().getMobileLocationServiceAuthorized());
-		caps.setCapability("autoAcceptAlerts", ConfigurationManager.getInstance().getMobileAutoAcceptAlerts());
-		caps.setCapability("autoDismissAlerts", ConfigurationManager.getInstance().getMobileAutoDismissAlerts());
-		caps.setCapability("nativeInstrumentsLib", ConfigurationManager.getInstance().getMobileNativeInstrumentsLib());
-		caps.setCapability("nativeWebTap", ConfigurationManager.getInstance().getMobileNativeWebTap());
-		caps.setCapability("safariInitialUrl", ConfigurationManager.getInstance().getMobileSafariInitialURL());
-		caps.setCapability("safariAllowPopups", ConfigurationManager.getInstance().getMobileSafariAllowPopups());
-		caps.setCapability("safariIgnoreFraudWarning", ConfigurationManager.getInstance().getMobileSafariIgnoreFraudWarnings());
-		caps.setCapability("safariOpenLinksInBackground", ConfigurationManager.getInstance().getMobileSafariOpenLinksInBackground());
-		caps.setCapability("keepKeyChains", ConfigurationManager.getInstance().getMobileKeepKeyChains());
-		caps.setCapability("localizableStringsDir", ConfigurationManager.getInstance().getMobileLocalizableStringsDirectory());
-		caps.setCapability("processArguments", ConfigurationManager.getInstance().getMobileProcessArguments());
-		caps.setCapability("interKeyDelay", ConfigurationManager.getInstance().getMobileInterKeyDelay());
-		caps.setCapability("showIOSLog", ConfigurationManager.getInstance().getMobileShowIOSLog());
-		caps.setCapability("sendKeyStrategy", ConfigurationManager.getInstance().getMobileSendKeyStragegy());
-		caps.setCapability("screenshotWaitTimeout", ConfigurationManager.getInstance().getMobileScreentimeWaitTimeout());
-		caps.setCapability("waitForAppScript", ConfigurationManager.getInstance().getMobileWaitForAppScript());		
+		if (ConfigurationManager.getInstance().getMobileCalendarFormat().length() != 0)
+			caps.setCapability("calendarFormat", ConfigurationManager.getInstance().getMobileCalendarFormat());
+		if (ConfigurationManager.getInstance().getMobileBundleId().length() != 0)
+			caps.setCapability("bundleId", ConfigurationManager.getInstance().getMobileBundleId());
+		if (ConfigurationManager.getInstance().getMobileLaunchTimeout() != null)
+			caps.setCapability("launchTimeout", ConfigurationManager.getInstance().getMobileLaunchTimeout());
+		if (ConfigurationManager.getInstance().getMobileLocationServiceEnabled() != null)
+			caps.setCapability("locationServicesEnabled", ConfigurationManager.getInstance().getMobileLocationServiceEnabled());
+		if (ConfigurationManager.getInstance().getMobileLocationServiceAuthorized() != null)
+			caps.setCapability("locationServicesAuthorized", ConfigurationManager.getInstance().getMobileLocationServiceAuthorized());
+		if (ConfigurationManager.getInstance().getMobileAutoAcceptAlerts() != null)
+			caps.setCapability("autoAcceptAlerts", ConfigurationManager.getInstance().getMobileAutoAcceptAlerts());
+		if (ConfigurationManager.getInstance().getMobileAutoDismissAlerts() != null)
+			caps.setCapability("autoDismissAlerts", ConfigurationManager.getInstance().getMobileAutoDismissAlerts());
+		if (ConfigurationManager.getInstance().getMobileNativeInstrumentsLib() != null)
+			caps.setCapability("nativeInstrumentsLib", ConfigurationManager.getInstance().getMobileNativeInstrumentsLib());
+		if (ConfigurationManager.getInstance().getMobileNativeWebTap() != null)
+			caps.setCapability("nativeWebTap", ConfigurationManager.getInstance().getMobileNativeWebTap());
+		if (ConfigurationManager.getInstance().getMobileSafariInitialURL().length() != 0)
+			caps.setCapability("safariInitialUrl", ConfigurationManager.getInstance().getMobileSafariInitialURL());
+		if (ConfigurationManager.getInstance().getMobileSafariAllowPopups() != null)
+			caps.setCapability("safariAllowPopups", ConfigurationManager.getInstance().getMobileSafariAllowPopups());
+		if (ConfigurationManager.getInstance().getMobileSafariIgnoreFraudWarnings() != null)
+			caps.setCapability("safariIgnoreFraudWarning", ConfigurationManager.getInstance().getMobileSafariIgnoreFraudWarnings());
+		if (ConfigurationManager.getInstance().getMobileSafariOpenLinksInBackground() != null)
+			caps.setCapability("safariOpenLinksInBackground", ConfigurationManager.getInstance().getMobileSafariOpenLinksInBackground());
+		if (ConfigurationManager.getInstance().getMobileKeepKeyChains() != null)
+			caps.setCapability("keepKeyChains", ConfigurationManager.getInstance().getMobileKeepKeyChains());
+		if (ConfigurationManager.getInstance().getMobileLocalizableStringsDirectory().length() != 0)
+			caps.setCapability("localizableStringsDir", ConfigurationManager.getInstance().getMobileLocalizableStringsDirectory());
+		if (ConfigurationManager.getInstance().getMobileProcessArguments().length() != 0)
+			caps.setCapability("processArguments", ConfigurationManager.getInstance().getMobileProcessArguments());
+		if (ConfigurationManager.getInstance().getMobileInterKeyDelay() != 0)
+			caps.setCapability("interKeyDelay", ConfigurationManager.getInstance().getMobileInterKeyDelay());
+		if (ConfigurationManager.getInstance().getMobileShowIOSLog() != null)
+			caps.setCapability("showIOSLog", ConfigurationManager.getInstance().getMobileShowIOSLog());
+		if (ConfigurationManager.getInstance().getMobileSendKeyStragegy() != null)
+			caps.setCapability("sendKeyStrategy", ConfigurationManager.getInstance().getMobileSendKeyStragegy());
+		if (ConfigurationManager.getInstance().getMobileScreentimeWaitTimeout() != null)
+			caps.setCapability("screenshotWaitTimeout", ConfigurationManager.getInstance().getMobileScreentimeWaitTimeout());
+		if (ConfigurationManager.getInstance().getMobileWaitForAppScript() != null)
+			caps.setCapability("waitForAppScript", ConfigurationManager.getInstance().getMobileWaitForAppScript());		
 	}
 	
 	private void startAppiumServer() {

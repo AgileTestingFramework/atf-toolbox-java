@@ -154,21 +154,36 @@
 
 		<mobile>
 			<common>
-				<appium-version>1.2.2</appium-version>
-				<appium-start-node-server>true</appium-start-node-server>
-				<appium-node-server-commandline>cmd</appium-node-server-commandline>
-				<appium-node-server-arguments>/c,
+			    <automationName>Appium</automationName>
+				<appiumVersion></appiumVersion>
+				<appiumStartNodeServer>true</appiumStartNodeServer>
+				<appiumNodeServerCommandLine>cmd</appiumNodeServerCommandLine>
+				<appiumNodeServerArguments>/c,
 					C:/Progra~2/appium/Appium/Node.exe,
 					C:/Progra~2/appium/Appium/node_modules/appium/bin/appium.js,
+					--address, 127.0.0.1,
+					--port, 4723,
 					--full-reset
-				</appium-node-server-arguments>
-				<grid-url>http://127.0.0.1:4723/wd/hub</grid-url>
-				<platform-name>android</platform-name>
-				<platform-version>5.1</platform-version>
-				<device-name>Nexus4</device-name>
-				<device-type>phone</device-type> <!-- tablet -->
-				<browser-name>Chrome</browser-name>
-				<new-command-line-timeout>300</new-command-line-timeout>
+				</appiumNodeServerArguments>
+				<appiumNodeServerProcessName>Node.exe</appiumNodeServerProcessName>
+				<gridUrl>http://127.0.0.1:4723/wd/hub
+				</gridUrl>
+
+				<platformName>Android</platformName>
+				<platformVersion>5.1</platformVersion>
+				<deviceName>04ea252d124877ce</deviceName>
+				<deviceType></deviceType> <!-- tablet -->
+				<browserName>Chrome</browserName>
+				<newCommandTimeout></newCommandTimeout>
+				<app></app>
+				<autoLaunch></autoLaunch>
+				<language></language>
+				<locale></locale>
+				<udid></udid>
+				<orientation></orientation>
+				<autoWebview></autoWebview>
+				<noReset></noReset>
+				<fullReset></fullReset>
 			</common>
 			<android>
 				<appActivity></appActivity>

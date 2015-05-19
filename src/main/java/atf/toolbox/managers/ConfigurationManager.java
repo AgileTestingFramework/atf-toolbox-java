@@ -85,9 +85,7 @@ public class ConfigurationManager {
      */
     public Boolean getBooleanConfigEntry(String xPathKey)
     {
-         	Boolean returnValue = false;
-        	
-        	if (AllConfiguration.containsKey(xPathKey) && AllConfiguration.getString(xPathKey) != "")
+        	if (AllConfiguration.containsKey(xPathKey) && AllConfiguration.getString(xPathKey).length() != 0)
     		{
         		try
         		{
@@ -95,10 +93,10 @@ public class ConfigurationManager {
         		}
         		catch (Exception ex)
         		{
-        			return returnValue;
+        			return null;
         		}
     		}
-        	else return returnValue;
+        	else return null;
     }
     
     /**
@@ -139,11 +137,10 @@ public class ConfigurationManager {
     {
     	try {
         	if (AllConfiguration.containsKey(xPathKey)) return Integer.parseInt(AllConfiguration.getString(xPathKey));
-        	else return 0;
+        	else return null;
     	}
     	catch (Exception e)
     	{
-    		log.warn("Unable to integer parse configuration entry:"+xPathKey);
     		return null;
     	}
     }
@@ -641,11 +638,11 @@ public class ConfigurationManager {
 		return getStringEntry(key);
 	}
 	public List<String> getMobileAppiumNodeServerArguments() {
-		String key = "atf/mobile/common/appiumNodeServerArgs";
+		String key = "atf/mobile/common/appiumNodeServerArguments";
 		return getListEntry(key);
 	}
 	public String getMobileGridURL() {
-		String key = "atf/mobile/common/grid-url";
+		String key = "atf/mobile/common/gridUrl";
 		return getStringEntry(key);
 	}
 	public String getMobileAppiumVersion() {
@@ -654,10 +651,6 @@ public class ConfigurationManager {
 	}
 	public String getMobileAutomationName() {
 		String key = "atf/mobile/common/automationName";
-		return getStringEntry(key);
-	}
-	public String getMobilePlatformName() {
-		String key = "atf/mobile/common/platformName";
 		return getStringEntry(key);
 	}
 	public String getMobilePlatformVersion() {
@@ -687,15 +680,10 @@ public class ConfigurationManager {
 	}	
 	public String getMobileBrowserPlatform()
 	{
-    	String key = "atf/mobile/common/platform-name";
+    	String key = "atf/mobile/common/platformName";
     	return getStringEntry(key);		
 	}
-	public String getMobileUniqueID()
-	{
-		String key = "atf/mobile/common/unique-device-id";
-    	return getStringEntry(key);
-	}
-	public boolean getMobileAutoLaunch() {
+	public Boolean getMobileAutoLaunch() {
 		String key = "atf/mobile/common/autoLaunch";
 		return getBooleanConfigEntry(key);
 	}
@@ -715,15 +703,15 @@ public class ConfigurationManager {
 		String key = "atf/mobile/common/orientation";
 		return getStringEntry(key);
 	}
-	public boolean getMobileAutoWebView() {
+	public Boolean getMobileAutoWebView() {
 		String key = "atf/mobile/common/autoWebview";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileNoResetAppState() {
+	public Boolean getMobileNoResetAppState() {
 		String key = "atf/mobile/common/noReset";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileFullReset() {
+	public Boolean getMobileFullReset() {
 		String key = "atf/mobile/common/fullReset";
 		return getBooleanConfigEntry(key);
 	}
@@ -751,11 +739,11 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/deviceReadyTimeout";
 		return getIntEntry(key);
 	}
-	public boolean getMobileAndroidCoverage() {
+	public Boolean getMobileAndroidCoverage() {
 		String key = "atf/mobile/android/androidCoverage";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileEnablePerformanceLogging() {
+	public Boolean getMobileEnablePerformanceLogging() {
 		String key = "atf/mobile/android/enablePerformanceLogging";
 		return getBooleanConfigEntry(key);
 	}
@@ -783,7 +771,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/avdArgs";
 		return getStringEntry(key);
 	}	
-	public boolean getMobileUseKeystore() {
+	public Boolean getMobileUseKeystore() {
 		String key = "atf/mobile/android/useKeystore";
 		return getBooleanConfigEntry(key);
 	}
@@ -827,23 +815,23 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/optionalIntentArguments";
 		return getStringEntry(key);
 	}	
-	public boolean getMobileStopApplicationOnReset() {
+	public Boolean getMobileStopApplicationOnReset() {
 		String key = "atf/mobile/android/stopAppOnReset";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileEnableUnicodeInput() {
+	public Boolean getMobileEnableUnicodeInput() {
 		String key = "atf/mobile/android/unicodeKeyboard";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileResetKeyboard() {
+	public Boolean getMobileResetKeyboard() {
 		String key = "atf/mobile/android/resetKeyboard";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileNoSigning() {
+	public Boolean getMobileNoSigning() {
 		String key = "atf/mobile/android/noSign";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileIgnoreUnimportantViews() {
+	public Boolean getMobileIgnoreUnimportantViews() {
 		String key = "atf/mobile/android/ignoreUnimportantViews";
 		return getBooleanConfigEntry(key);
 	}
@@ -864,27 +852,27 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/launchTimeout";
 		return getIntEntry(key);
 	}
-	public boolean getMobileLocationServiceEnabled() {
+	public Boolean getMobileLocationServiceEnabled() {
 		String key = "atf/mobile/ios/locationServicesEnabled";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileLocationServiceAuthorized() {
+	public Boolean getMobileLocationServiceAuthorized() {
 		String key = "atf/mobile/ios/locationServicesAuthorized";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileAutoAcceptAlerts() {
+	public Boolean getMobileAutoAcceptAlerts() {
 		String key = "atf/mobile/ios/autoAcceptAlerts";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileAutoDismissAlerts() {
+	public Boolean getMobileAutoDismissAlerts() {
 		String key = "atf/mobile/ios/autoDismissAlerts";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileNativeInstrumentsLib() {
+	public Boolean getMobileNativeInstrumentsLib() {
 		String key = "atf/mobile/ios/nativeInstrumentsLib";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileNativeWebTap() {
+	public Boolean getMobileNativeWebTap() {
 		String key = "atf/mobile/ios/nativeWebTap";
 		return getBooleanConfigEntry(key);
 	}
@@ -892,19 +880,19 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/safariInitialUrl";
 		return getStringEntry(key);
 	}
-	public boolean getMobileSafariAllowPopups() {
+	public Boolean getMobileSafariAllowPopups() {
 		String key = "atf/mobile/ios/safariAllowPopups";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileSafariIgnoreFraudWarnings() {
+	public Boolean getMobileSafariIgnoreFraudWarnings() {
 		String key = "atf/mobile/ios/safariIgnoreFraudWarning";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileSafariOpenLinksInBackground() {
+	public Boolean getMobileSafariOpenLinksInBackground() {
 		String key = "atf/mobile/ios/safariOpenLinksInBackground";
 		return getBooleanConfigEntry(key);
 	}
-	public boolean getMobileKeepKeyChains() {
+	public Boolean getMobileKeepKeyChains() {
 		String key = "atf/mobile/ios/keepKeyChains";
 		return getBooleanConfigEntry(key);
 	}
@@ -920,7 +908,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/interKeyDelay";
 		return getIntEntry(key);
 	}
-	public boolean getMobileShowIOSLog() {
+	public Boolean getMobileShowIOSLog() {
 		String key = "atf/mobile/ios/showIOSLog";
 		return getBooleanConfigEntry(key);
 	}
@@ -932,7 +920,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/screenshotWaitTimeout";
 		return getIntEntry(key);
 	}
-	public boolean getMobileWaitForAppScript() {
+	public Boolean getMobileWaitForAppScript() {
 		String key = "atf/mobile/ios/waitForAppScript";
 		return getBooleanConfigEntry(key);
 	}
