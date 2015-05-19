@@ -206,7 +206,7 @@ public class MobileAutomationManager {
 			caps.setCapability("localizableStringsDir", ConfigurationManager.getInstance().getMobileLocalizableStringsDirectory());
 		if (ConfigurationManager.getInstance().getMobileProcessArguments().length() != 0)
 			caps.setCapability("processArguments", ConfigurationManager.getInstance().getMobileProcessArguments());
-		if (ConfigurationManager.getInstance().getMobileInterKeyDelay() != 0)
+		if (ConfigurationManager.getInstance().getMobileInterKeyDelay() != null)
 			caps.setCapability("interKeyDelay", ConfigurationManager.getInstance().getMobileInterKeyDelay());
 		if (ConfigurationManager.getInstance().getMobileShowIOSLog() != null)
 			caps.setCapability("showIOSLog", ConfigurationManager.getInstance().getMobileShowIOSLog());
