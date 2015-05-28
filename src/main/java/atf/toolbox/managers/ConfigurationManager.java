@@ -122,10 +122,14 @@ public class ConfigurationManager {
      */
     public String getStringEntry(String xPathKey)
     {
-         	String returnValue = "";
-        	
-        	if (AllConfiguration.containsKey(xPathKey)) return AllConfiguration.getString(xPathKey);
-        	else return returnValue;
+     	String returnValue = "";
+    	try {
+    		if (AllConfiguration.containsKey(xPathKey)) return AllConfiguration.getString(xPathKey);
+    		else return returnValue;
+    	}
+    	catch (Exception ex) {
+    		return returnValue;
+    	}
     }
     
     /**
