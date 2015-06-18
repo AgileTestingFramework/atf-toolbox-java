@@ -588,6 +588,10 @@ public class ConfigurationManager {
     	String key = "atf/reporting/buffered-image-save-format";
     	return getStringEntry(key);   	
     }
+    public String getTakesScreenshotSaveLocation() {
+    	String key = "atf/reporting/takes-screenshot-save-location";
+    	return getStringEntry(key);   	
+    }
 	/********************************************************************************/
 	/************* LOCALIZATION  ****************************************************/
 	/********************************************************************************/

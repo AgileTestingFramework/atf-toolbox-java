@@ -32,16 +32,17 @@ import org.w3c.dom.Document;
 
 import atf.toolbox.interfaces.WebService;
 
-public class WebServiceAutomationManager {
+public class WebServiceAutomationManager
+{
 	private static Logger log = LoggerFactory.getLogger(WebServiceAutomationManager.class);
-
 
 	private Map<String, WebService> webServices;
 
 	/**
 	 * WebServiceAutomationManager
 	 */
-	public WebServiceAutomationManager() {
+	public WebServiceAutomationManager()
+	{
 		log.info("Initializing the WebServiceAutomationManager.");
 		webServices = new HashMap<String, WebService>();
 	}
@@ -52,14 +53,16 @@ public class WebServiceAutomationManager {
 	 * 
 	 * @param webServiceContextPath
 	 */
-	private JAXBContext createWebServiceContext(String webServiceContextPath) {
-		try {
-			JAXBContext jaxbContext = JAXBContext
-					.newInstance(webServiceContextPath);
+	private JAXBContext createWebServiceContext(String webServiceContextPath)
+	{
+		try
+		{
+			JAXBContext jaxbContext = JAXBContext.newInstance(webServiceContextPath);
 			return jaxbContext;
-		} catch (JAXBException j) {
-			log.error("Unable to create JAXBContext for contextServicePath "
-					+ webServiceContextPath, j);
+		}
+		catch (JAXBException j)
+		{
+			log.error("Unable to create JAXBContext for contextServicePath " + webServiceContextPath, j);
 			return null;
 		}
 	}
@@ -74,11 +77,15 @@ public class WebServiceAutomationManager {
 	 * @param webService
 	 *            instance of webService
 	 */
-	public void addSoapService(String key, WebService webService) {
-		if (webServices.containsKey(key)) {
+	public void addSoapService(String key, WebService webService)
+	{
+		if (webServices.containsKey(key))
+		{
 			log.info("Replaced web service for key :" + key);
 			webServices.put(key, webService);
-		} else {
+		}
+		else
+		{
 			log.info("Added web Service with key: " + key);
 			webServices.put(key, webService);
 		}
@@ -90,17 +97,23 @@ public class WebServiceAutomationManager {
 	 * @param key
 	 *            key to locate the Soap Service to remove from the collection
 	 */
-	public void removeSoapService(String key) {
-		if (webServices.containsKey(key)) {
-			try {
+	public void removeSoapService(String key)
+	{
+		if (webServices.containsKey(key))
+		{
+			try
+			{
 				webServices.remove(key);
 				log.info("Successfully removed web service : " + key);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				log.info("Unable to remove web service: " + key, ex);
 			}
-		} else {
-			log.info("Unable to remove web service. No web service found with key : "
-					+ key);
+		}
+		else
+		{
+			log.info("Unable to remove web service. No web service found with key : " + key);
 		}
 	}
 
@@ -111,16 +124,18 @@ public class WebServiceAutomationManager {
 	 *            used to locate the web source
 	 * @return the WebService located for the key provided
 	 */
-	public WebService getWebService(String key) {
-		if (webServices.containsKey(key)) {
+	public WebService getWebService(String key)
+	{
+		if (webServices.containsKey(key))
+		{
 			return webServices.get(key);
-		} else {
-			log.warn("Unable to locate web Service for key: " + key
-					+ " returning null.");
+		}
+		else
+		{
+			log.warn("Unable to locate web Service for key: " + key + " returning null.");
 			return null;
 		}
 	}
-
 
 	/**
 	 * sendSoapMessage Connect to the service, will log the request and response
@@ -133,14 +148,14 @@ public class WebServiceAutomationManager {
 	 * @throws MalformedURLException
 	 * @throws SOAPException
 	 */
-	public SOAPMessage sendSoapMessage(String webServiceKey, SOAPMessage request)
-			throws MalformedURLException, SOAPException {
+	public SOAPMessage sendSoapMessage(String webServiceKey, SOAPMessage request) throws MalformedURLException, SOAPException
+	{
 		SOAPMessage response = null;
 
-		SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory
-				.newInstance();
+		SOAPConnectionFactory soapConnectionFactory = SOAPConnectionFactory.newInstance();
 		SOAPConnection connection = soapConnectionFactory.createConnection();
-		try {
+		try
+		{
 
 			WebService service = getWebService(webServiceKey);
 
@@ -151,9 +166,13 @@ public class WebServiceAutomationManager {
 			response = connection.call(request, endpoint);
 
 			logSOAPMessage(response, "SOAP Response");
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			throw e;
-		} finally {
+		}
+		finally
+		{
 			connection.close();
 		}
 
@@ -170,11 +189,9 @@ public class WebServiceAutomationManager {
 	 * @throws SOAPException
 	 * @throws JAXBException
 	 */
-	public SOAPMessage callSoapServiceAndGenerateSOAPMessage(
-			String webServiceKey, Object request) throws MalformedURLException,
-			SOAPException, JAXBException {
-		SOAPMessage message = createSOAPRequestMessage(webServiceKey, request,
-				null);
+	public SOAPMessage callSoapServiceAndGenerateSOAPMessage(String webServiceKey, Object request) throws MalformedURLException, SOAPException, JAXBException
+	{
+		SOAPMessage message = createSOAPRequestMessage(webServiceKey, request, null);
 		SOAPMessage responseMessage = sendSoapMessage(webServiceKey, message);
 
 		return responseMessage;
@@ -193,8 +210,8 @@ public class WebServiceAutomationManager {
 	 * @throws SOAPException
 	 * @throws JAXBException
 	 */
-	private SOAPMessage createSOAPRequestMessage(String webServiceKey,
-			Object request, String action) throws SOAPException, JAXBException {
+	private SOAPMessage createSOAPRequestMessage(String webServiceKey, Object request, String action) throws SOAPException, JAXBException
+	{
 		WebService service = getWebService(webServiceKey);
 
 		MessageFactory factory = MessageFactory.newInstance();
@@ -205,10 +222,10 @@ public class WebServiceAutomationManager {
 		SOAPEnvelope envelope = soapPart.getEnvelope();
 		envelope.addNamespaceDeclaration("example", service.getNamespaceURI());
 
-		if (action != null) {
+		if (action != null)
+		{
 			MimeHeaders headers = message.getMimeHeaders();
-			headers.addHeader("SOAPAction", service.getNamespaceURI()
-					+ "VerifyEmail");
+			headers.addHeader("SOAPAction", service.getNamespaceURI() + "VerifyEmail");
 		}
 
 		// SOAP Body
@@ -228,7 +245,8 @@ public class WebServiceAutomationManager {
 	 * @return Document extracted from the message body
 	 * @throws SOAPException
 	 */
-	public Document extractDocument(SOAPMessage message) throws SOAPException {
+	public Document extractDocument(SOAPMessage message) throws SOAPException
+	{
 		SOAPBody soapBody = message.getSOAPBody();
 
 		Document doc = soapBody.extractContentAsDocument();
@@ -244,7 +262,8 @@ public class WebServiceAutomationManager {
 	 * @return SOAPBody extracted from the message and unmarshalled, null if
 	 *         errors encountered
 	 */
-	public Object extractBody(String contextPath, SOAPMessage message) {
+	public Object extractBody(String contextPath, SOAPMessage message)
+	{
 		return unmarshallObject(contextPath, message);
 	}
 
@@ -258,16 +277,20 @@ public class WebServiceAutomationManager {
 	 *            must support at least Document and Element.
 	 * @return - unmashalled object
 	 */
-	public Object unmarshallObject(String webServiceContextPath,
-			SOAPMessage message) {
+	public Object unmarshallObject(String webServiceContextPath, SOAPMessage message)
+	{
 		Object answer = null;
-		try {
+		try
+		{
 			JAXBContext serviceContext = createWebServiceContext(webServiceContextPath);
-			answer = (Object) serviceContext.createUnmarshaller().unmarshal(
-					message.getSOAPBody().getFirstChild());
-		} catch (JAXBException e) {
+			answer = (Object) serviceContext.createUnmarshaller().unmarshal(message.getSOAPBody().getFirstChild());
+		}
+		catch (JAXBException e)
+		{
 			log.error("Unmarshalling soap message: " + message, e);
-		} catch (SOAPException e) {
+		}
+		catch (SOAPException e)
+		{
 			log.error("Unmarshalling soap message: " + message, e);
 			e.printStackTrace();
 		}
@@ -284,8 +307,8 @@ public class WebServiceAutomationManager {
 	 *            , will contain the updated XML content after unmashalling
 	 * @throws JAXBException
 	 */
-	public Object marshallObject(String webServiceContextPath, Object request,
-			SOAPBody body) throws JAXBException {
+	public Object marshallObject(String webServiceContextPath, Object request, SOAPBody body) throws JAXBException
+	{
 		JAXBContext serviceContext = createWebServiceContext(webServiceContextPath);
 		serviceContext.createMarshaller().marshal(request, body);
 
@@ -300,59 +323,74 @@ public class WebServiceAutomationManager {
 	 * @param logMsg
 	 *            - Message prefix when logging
 	 */
-	public void logSOAPMessage(SOAPMessage message, String logMsg) {
-		if (logMsg == null || logMsg == StringUtils.EMPTY)
-			logMsg = "logSOAPMessage";
+	public void logSOAPMessage(SOAPMessage message, String logMsg)
+	{
+		if (logMsg == null || logMsg == StringUtils.EMPTY) logMsg = "logSOAPMessage";
 
-		if (message != null) {
+		if (message != null)
+		{
 			ByteArrayOutputStream bout = new ByteArrayOutputStream();
-			try {
+			try
+			{
 				message.writeTo(bout);
 				log.trace(logMsg + ": " + bout.toString("UTF-8"));
 				System.out.println(bout.toString("UTF-8"));
-			} catch (SOAPException se) {
+			}
+			catch (SOAPException se)
+			{
 				se.printStackTrace();
 				log.error("Error logging SOAPMessage: ", se);
-			} catch (IOException ioe) {
+			}
+			catch (IOException ioe)
+			{
 				ioe.printStackTrace();
 				log.error("Error logging SOAPMessage: ", ioe);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				ex.printStackTrace();
 				log.error("Error logging SOAPMessage: ", ex);
 			}
-		} else {
+		}
+		else
+		{
 			log.trace(logMsg + ": " + "null");
 		}
 	}
 
 	/**
 	 * getSoapBodyXMLFromMessage
-	 * @param response SOAPMessage response
+	 * 
+	 * @param response
+	 *            SOAPMessage response
 	 * @return String representation of the SOAPBody
 	 */
-	public String getSoapBodyXMLFromMessage(SOAPMessage response) {
+	public String getSoapBodyXMLFromMessage(SOAPMessage response)
+	{
 		String message = null;
-		try {
+		try
+		{
 			DOMSource source = new DOMSource(response.getSOAPBody());
 			StringWriter stringResult = new StringWriter();
 
-			TransformerFactory.newInstance().newTransformer()
-					.transform(source, new StreamResult(stringResult));
+			TransformerFactory.newInstance().newTransformer().transform(source, new StreamResult(stringResult));
 
 			message = stringResult.toString();
 
-		} catch (TransformerException | TransformerFactoryConfigurationError | SOAPException e) {
+		}
+		catch (TransformerException | TransformerFactoryConfigurationError | SOAPException e)
+		{
 			log.error("Unable to parse body from response.", e);
 		}
-		
+
 		return message;
 	}
-	
+
 	/**
 	 * teardown
 	 */
 	public void teardown()
 	{
-		
+
 	}
 }

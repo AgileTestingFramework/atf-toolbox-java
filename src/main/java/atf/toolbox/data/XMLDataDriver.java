@@ -14,7 +14,8 @@ import org.slf4j.LoggerFactory;
 
 import atf.toolbox.interfaces.DataDriver;
 
-public class XMLDataDriver implements DataDriver {
+public class XMLDataDriver implements DataDriver
+{
 	private static Logger log = LoggerFactory.getLogger(XMLDataDriver.class);
 
 	private String xmlFileName;
@@ -22,52 +23,65 @@ public class XMLDataDriver implements DataDriver {
 	private Document xmlDocument;
 
 	/**
-	 * XMLDataDriver
-	 * Loads data from an XML file
-	 * @param fileName Name of the XML test data file to locate the test case scenario data
-	 * @param testCaseId id to locate in XML test case section in the test data file
+	 * XMLDataDriver Loads data from an XML file
+	 * 
+	 * @param fileName
+	 *            Name of the XML test data file to locate the test case
+	 *            scenario data
+	 * @param testCaseId
+	 *            id to locate in XML test case section in the test data file
 	 */
-	public XMLDataDriver(String fileName, String testCaseId) {
+	public XMLDataDriver(String fileName, String testCaseId)
+	{
 		xmlFileName = fileName;
 		name = testCaseId;
 
-		InitializeXMLForLoad();
+		initializeXMLForLoad();
 	}
 
-	private void InitializeXMLForLoad() {
-		try {
+	private void initializeXMLForLoad()
+	{
+		try
+		{
 			SAXBuilder jdomBuilder = new SAXBuilder();
 			xmlDocument = jdomBuilder.build(XMLDataDriver.class.getResourceAsStream("/" + xmlFileName));
-	
-		} catch (JDOMException jdomEx) {
-			log.error("Unable to parse test data file: "+xmlFileName, jdomEx);
-		} catch (IOException ioEx) {
-			log.error("Unable to find test data file: "+ xmlFileName+" to parse.", ioEx);
+
 		}
-			
+		catch (JDOMException jdomEx)
+		{
+			log.error("Unable to parse test data file: " + xmlFileName, jdomEx);
+		}
+		catch (IOException ioEx)
+		{
+			log.error("Unable to find test data file: " + xmlFileName + " to parse.", ioEx);
+		}
+
 	}
 
 	@Override
-	public TestCaseData Load() {
+	public TestCaseData load()
+	{
 		TestCaseData tcData = new TestCaseData();
 
 		XPathFactory xFactory = XPathFactory.instance();
-		
-		Element testCase = xFactory.compile("//testcase[@name='" + name + "']",  Filters.element()).evaluateFirst(xmlDocument);
+
+		Element testCase = xFactory.compile("//testcase[@name='" + name + "']", Filters.element()).evaluateFirst(xmlDocument);
 
 		List<Element> scenarios = testCase.getChildren();
-		
-		for (Element scenario : scenarios) {
+
+		for (Element scenario : scenarios)
+		{
 			List<Element> parameters = scenario.getChildren();
 			ScenarioData testScenario = new ScenarioData(scenario.getName(), testCase.getName());
-			
-			for (Element parameter : parameters) {
+
+			for (Element parameter : parameters)
+			{
 				testScenario.putScenarioData(parameter.getName(), parameter.getValue());
 			}
-			
+
 			tcData.addScenarioData(testScenario);
 		}
-		
+
 		return tcData;
 	}
 

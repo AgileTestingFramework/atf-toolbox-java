@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>atf</groupId>
 	<artifactId>toolbox</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 	<name>Agile Testing Framework Toolbox</name>
 	<description>Automation Testing Framework Toolbox Provides simple automation.</description>
@@ -17,6 +17,7 @@
 		</license>
 	</licenses>
 
+	<dependencies>
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>
@@ -104,6 +105,11 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
+			<groupId>net.jsourcerer.webdriver</groupId>
+			<artifactId>JSErrorCollector</artifactId>
+			<version>0.6</version>
+		</dependency>
+		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.0.13</version>
@@ -122,6 +128,17 @@
 			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
 			<version>1.1.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xalan</artifactId>
+					<groupId>xalan</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.airbnb.squiggle</groupId>
+			<artifactId>squiggle</artifactId>
+			<version>3.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sikuli</groupId>

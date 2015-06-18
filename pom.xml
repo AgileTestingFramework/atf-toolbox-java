@@ -3,12 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>atf</groupId>
 	<artifactId>toolbox</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>Agile Testing Framework Toolbox</name>
 	<description>Automation Testing Framework Toolbox Provides simple automation.</description>
 	<repositories>
-		<!-- USE the following to install any other 3rd party dependency that doesn't 
-			have a public maven C:\Projects\workspace\atf-toolbox\toolbox>mvn install:install-file -DlocalRepositoryPath=repo -DcreateChecksum=true -Dpackaging=jar -Dfile=JSErrorCollector-0.6.jar-DgroupId=net.jsourcerer.webdriver -DartifactId=JSErrorCollector -Dversion=0.6 -->
 		<repository>
 			<id>repo</id>
 			<url>file://${basedir}/repo</url>
@@ -124,6 +122,12 @@
 			<groupId>jaxen</groupId>
 			<artifactId>jaxen</artifactId>
 			<version>1.1.1</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>xalan</artifactId>
+					<groupId>xalan</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>com.airbnb.squiggle</groupId>
