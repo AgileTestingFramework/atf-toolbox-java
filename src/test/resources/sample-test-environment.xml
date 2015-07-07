@@ -122,9 +122,6 @@
 			</ie>
 			<safari>
 				<use-options></use-options>
-				<data-dir></data-dir>
-				<driver-extension></driver-extension>
-				<skip-extension-installation></skip-extension-installation>
 				<port></port>
 				<use-clean-session></use-clean-session>
 				<rc-mode></rc-mode>

@@ -517,22 +517,10 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/safari/use-options";
     	return getBooleanConfigEntry(key);
     }
-    public String getSafariDataDirectory() {
-    	String key = "atf/desired-capabilities/safari/data-dir";
-    	return getStringEntry(key);
-    }
-    public String getSafariDriverExtension() {
-    	String key = "atf/desired-capabilities/safari/driver-extension";
-    	return getStringEntry(key);
-    }
     public Boolean getSafariCleanSession() {
     	String key = "atf/desired-capabilities/safari/clean-session";
     	return getBooleanConfigEntry(key);
     }
-    public Boolean getSafariSkipExtentionInstallation() {
-    	String key = "atf/desired-capabilities/safari/skip-extension-installation";
-    	return getBooleanConfigEntry(key);
-    }   
     public Integer getSafariPort() {
     	String key = "atf/desired-capabilities/safari/port";
     	return getIntEntry(key);

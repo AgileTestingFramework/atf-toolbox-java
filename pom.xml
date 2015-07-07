@@ -243,7 +243,7 @@
 		<slf4j.version>1.7.5</slf4j.version>
 		<java.version>7</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<selenium.version>2.43.1</selenium.version>
+		<selenium.version>2.46.0</selenium.version>
 		<appium.version>2.0.0</appium.version>
 		<fest.version>2.0M10</fest.version>
 		<phantomjsdriver.version>1.2.0</phantomjsdriver.version>

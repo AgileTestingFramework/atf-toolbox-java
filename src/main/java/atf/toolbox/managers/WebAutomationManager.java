@@ -173,10 +173,7 @@ public class WebAutomationManager
 			if (ConfigurationManager.getInstance().getSafariUseOptions() != null && ConfigurationManager.getInstance().getSafariUseOptions())
 			{
 				SafariOptions options = new SafariOptions();
-				if (ConfigurationManager.getInstance().getSafariDataDirectory().length() > 0) options.setDataDir(new File(ConfigurationManager.getInstance().getSafariDataDirectory()));
-				if (ConfigurationManager.getInstance().getSafariDriverExtension().length() > 0) options.setDriverExtension(new File(ConfigurationManager.getInstance().getSafariDriverExtension()));
 				if (ConfigurationManager.getInstance().getSafariPort() != null) options.setPort(ConfigurationManager.getInstance().getSafariPort());
-				if (ConfigurationManager.getInstance().getSafariSkipExtentionInstallation() != null) options.setSkipExtensionInstallation(ConfigurationManager.getInstance().getSafariSkipExtentionInstallation());
 				if (ConfigurationManager.getInstance().getSafariCleanSession() != null) options.setUseCleanSession(ConfigurationManager.getInstance().getSafariCleanSession());
 
 				if (ConfigurationManager.getInstance().getUseGrid() != null && !ConfigurationManager.getInstance().getUseGrid())
