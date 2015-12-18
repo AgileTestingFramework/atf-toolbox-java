@@ -3,14 +3,60 @@ package test.atf.toolbox;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class ATFHandlerTest {
+import atf.toolbox.data.CSVDataDriver;
+import atf.toolbox.data.ExcelDataDriver;
+import atf.toolbox.data.ScenarioData;
+import atf.toolbox.data.TestDataProvider;
 
+public class ATFHandlerTest {
 	// Placeholder class to exercise the framework during development DO NOT REMOVE !!!
-	/*
+		/*
+	private static TestDataProvider atfTestDataProvider;
+	
+	@DataProvider(name = "AddTwoNumbersEXCEL")
+	public static Object[][] additionDataEXCEL()
+	{
+		String testCaseName = "Add2Numbers";
+		return atfTestDataProvider.initialize(new ExcelDataDriver("./testData/datainjection-calculator-test-data.xlsx", testCaseName));
+	}
+	
+	@DataProvider(name = "AddTwoNumbersCSV")
+	public static Object[][] additionDataCSV()
+	{
+		return atfTestDataProvider.initialize(new CSVDataDriver("./testData", "datainjection-calculator-test-data"));
+	}
+
+	@BeforeClass(alwaysRun = true)
+	public static void beforeClassSetup()
+	{
+		atfTestDataProvider = new TestDataProvider();
+	}
+	
+	@Test(dataProvider = "AddTwoNumbersEXCEL", groups = { "datainjection" })
+	public void addTwoNumbersEXCEL(ScenarioData scenario)
+	{
+		int num1 = scenario.getIntParameterData("firstNumber");
+		int num2 = scenario.getIntParameterData("secondNumber");
+		int expectedResult = scenario.getIntParameterData("expectedSum");
+
+		assertThat((num1 + num2)).isEqualTo(expectedResult);
+	}
+	
+	@Test(dataProvider = "AddTwoNumbersCSV", groups = { "datainjection" })
+	public void addTwoNumbersCSV(ScenarioData scenario)
+	{
+		int num1 = scenario.getIntParameterData("firstNumber");
+		int num2 = scenario.getIntParameterData("secondNumber");
+		int expectedResult = scenario.getIntParameterData("expectedSum");
+
+		assertThat((num1 + num2)).isEqualTo(expectedResult);
+	}
+	
+	
 	 * @Test public void validateFirstNameAcceptsNoMoreThanMaxCharFAIL() {
 	 * ATFHandler.getInstance().getWebAutomation().getWebDriver().navigate().to(
 	 * "http://stackoverflow.com/questions/19011991/getting-error-when-trying-to-intialize-webdriver-for-firefox"

@@ -158,6 +158,21 @@
 			<artifactId>jbehave-core</artifactId>
 			<version>${jbehave.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>sqljdbc42</artifactId>
+			<version>4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.csvjdbc</groupId>
+			<artifactId>csvjdbc</artifactId>
+			<version>1.0.25</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.sqlsheet</groupId>
+			<artifactId>sqlsheet</artifactId>
+			<version>6.5</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
