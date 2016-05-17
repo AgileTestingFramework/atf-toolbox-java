@@ -40,10 +40,9 @@
 
 			<remote-webdriver-remote-quiet-exceptions></remote-webdriver-remote-quiet-exceptions>
 
-			<grid-use>false</grid-use>
-			<grid-url>http://localhost:4443/wd/hub</grid-url>
+			<grid-use>true</grid-use>
 			<!-- Using Saucelabs -->
-			<!-- <grid-url>http://stephen-rufle-atf:b349a801-f092-40f7-8857-46d849064db3@ondemand.saucelabs.com:80/wd/hub</grid-url> -->
+			<grid-url>http://kristen-varona:8dfb75f7-40cb-4ff0-8137-816b6986e657@ondemand.saucelabs.com:80/wd/hub</grid-url>
 			<grid-selenium-protocol></grid-selenium-protocol>
 			<grid-max-instances></grid-max-instances>
 			<phantomjs>

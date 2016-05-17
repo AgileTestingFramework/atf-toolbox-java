@@ -1,6 +1,8 @@
 package atf.toolbox.managers;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -294,7 +296,16 @@ public class WebAutomationManager
 
 		if (ConfigurationManager.getInstance().getUseGrid())
 		{
-			driver = new RemoteWebDriver(capabilities);
+			URL gridUrl = null;
+			if (ConfigurationManager.getInstance().getGridUrl().length() > 0) {
+				try {
+					gridUrl = new URL(ConfigurationManager.getInstance().getGridUrl());
+					gridUrl = new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub");
+				} catch (MalformedURLException e) {
+					e.printStackTrace();
+				}
+			}
+			driver = new RemoteWebDriver(gridUrl, capabilities);
 		}
 
 		log.trace(String.format("Using browser='%s', with getCapabilities='%s'", driver.toString(), ((RemoteWebDriver) driver).getCapabilities().toString()));
