@@ -297,14 +297,19 @@ public class WebAutomationManager
 		if (ConfigurationManager.getInstance().getUseGrid())
 		{
 			URL gridUrl = null;
-			if (ConfigurationManager.getInstance().getGridUrl().length() > 0) {
-				try {
-					gridUrl = new URL(ConfigurationManager.getInstance().getGridUrl());
-					gridUrl = new URL("http://"+System.getenv("SAUCE_USERNAME")+":"+System.getenv("SAUCE_ACCESS_KEY")+"@ondemand.saucelabs.com:80/wd/hub");
-				} catch (MalformedURLException e) {
-					e.printStackTrace();
-				}
+
+			// Code for sauce based on Jekins configuration of a multi-matrix project with sauce on demand plugin
+			try {
+				String username = System.getenv("SAUCE_USERNAME");
+				String accesskey = System.getenv("SAUCE_ACCESS_KEY");
+				gridUrl = new URL("http://"+username+":"+accesskey+"@ondemand.saucelabs.com:80/wd/hub");
+			} catch (MalformedURLException e) {
+				log.error("Unable to create grid URL to create remote web driver.");
 			}
+			capabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+			capabilities.setVersion(System.getenv("SELENIUM_VERSION"));
+			capabilities.setCapability("platform", System.getenv("SELENIUM_PLATFORM"));
+
 			driver = new RemoteWebDriver(gridUrl, capabilities);
 		}
 
