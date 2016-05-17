@@ -1,6 +1,8 @@
 package atf.toolbox.managers;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -294,7 +296,21 @@ public class WebAutomationManager
 
 		if (ConfigurationManager.getInstance().getUseGrid())
 		{
-			driver = new RemoteWebDriver(capabilities);
+			URL gridUrl = null;
+
+			// Code for sauce based on Jekins configuration of a multi-matrix project with sauce on demand plugin
+			try {
+				String username = System.getenv("SAUCE_USERNAME");
+				String accesskey = System.getenv("SAUCE_ACCESS_KEY");
+				gridUrl = new URL("http://"+username+":"+accesskey+"@ondemand.saucelabs.com:80/wd/hub");
+			} catch (MalformedURLException e) {
+				log.error("Unable to create grid URL to create remote web driver.");
+			}
+			capabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
+			capabilities.setVersion(System.getenv("SELENIUM_VERSION"));
+			capabilities.setCapability("platform", System.getenv("SELENIUM_PLATFORM"));
+
+			driver = new RemoteWebDriver(gridUrl, capabilities);
 		}
 
 		log.trace(String.format("Using browser='%s', with getCapabilities='%s'", driver.toString(), ((RemoteWebDriver) driver).getCapabilities().toString()));
