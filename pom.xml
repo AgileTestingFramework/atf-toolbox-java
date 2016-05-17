@@ -265,5 +265,5 @@
 		<jbehave.version>3.9.5</jbehave.version>
 	</properties>
 	<url>http://www.agiletestingframework.com</url>
-	<version>3.0-SNAPSHOT</version>
+	<version>4.0-SNAPSHOT</version>
 </project>
