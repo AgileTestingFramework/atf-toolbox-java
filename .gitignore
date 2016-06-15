@@ -1,0 +1,7 @@
+
+#ignore thumbnails created by windows
+Thumbs.db
+target
+test-results
+.project
+.classpath
