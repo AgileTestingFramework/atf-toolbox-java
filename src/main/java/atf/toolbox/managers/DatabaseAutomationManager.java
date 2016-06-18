@@ -15,7 +15,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.truemesh.squiggle.SelectQuery;
+import io.zatarox.squiggle.SelectQuery;
 
 public class DatabaseAutomationManager
 {
@@ -187,7 +187,7 @@ public class DatabaseAutomationManager
 	 * 
 	 * @param selectStmnt
 	 *            squiggle sql select query
-	 *            (https://code.google.com/p/squiggle-sql/)
+	 *            (https://github.com/gchauvet/squiggle-sql)
 	 * @return ResultSet of the statement execution
 	 */
 	public List<Map<String, Object>> selectData(SelectQuery selectStmnt)
@@ -216,7 +216,7 @@ public class DatabaseAutomationManager
 	 *            the key to locate the datasource to use
 	 * @param selectStmnt
 	 *            squiggle sql select query
-	 *            (https://code.google.com/p/squiggle-sql/)
+	 *            (https://github.com/gchauvet/squiggle-sql)
 	 * @return ResultSet of the statement execution
 	 */
 	public List<Map<String, Object>> selectData(String dataSourceKey, SelectQuery selectStmnt)
