@@ -11,6 +11,14 @@
 			<url>file://${basedir}/repo</url>
 		</repository>
 	    <repository>
+	        <id>repo-liferay</id>
+	        <name>oss-liferay</name>
+	        <url>https://repository.liferay.com/nexus/content/groups/public</url>
+	        <snapshots>
+	            <enabled>true</enabled>
+	        </snapshots>
+	    </repository>
+	    <repository>
 	        <id>oss-sonatype</id>
 	        <name>oss-sonatype</name>
 	        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
@@ -106,9 +114,9 @@
 			<version>1.4</version>
 		</dependency>
 		<dependency>
-			<groupId>net.jsourcerer.webdriver</groupId>
-			<artifactId>JSErrorCollector</artifactId>
-			<version>0.6</version>
+		  <groupId>com.liferay</groupId>
+		  <artifactId>net.jsourcerer.webdriver.JSErrorCollector</artifactId>
+		  <version>0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
@@ -197,57 +205,6 @@
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>
-
-
- 		<plugin> 
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <executions>
-                <execution>
-                	<id>copy</id>
-                    <phase>prepare-package</phase>
-                    <goals>
-                        <goal>copy</goal>
-                    </goals>
-                    <configuration>
-                    	<artifactItems>
-                    		<artifactItem>
-								<groupId>com.airbnb.squiggle</groupId>
-								<artifactId>squiggle</artifactId>
-								<version>3.0.1</version>
-								<type>jar</type>
-                    		</artifactItem>
-                    		<artifactItem>
-								<groupId>net.jsourcerer.webdriver</groupId>
-								<artifactId>JSErrorCollector</artifactId>
-								<version>0.6</version>
-								<type>jar</type>
-                    		</artifactItem>
-                    	</artifactItems>
-                        <outputDirectory>${project.build.directory}/classes/lib</outputDirectory>                       
-                        <overWriteReleases>false</overWriteReleases>
-                        <overWriteSnapshots>false</overWriteSnapshots>
-                        <overWriteIfNewer>true</overWriteIfNewer>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
-
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-jar-plugin</artifactId>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <addClasspath>false</addClasspath>
-                    </manifest>
-                    <manifestEntries>
-                    	<Class-Path>lib/JSErrorCollector-0.6.jar lib/squiggle-3.0.1.jar</Class-Path>
-                    </manifestEntries>
-                </archive>
-            </configuration> 
-        </plugin>
-
 		</plugins>
 	</build>
 	<properties>
