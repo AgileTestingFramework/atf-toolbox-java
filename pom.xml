@@ -174,7 +174,7 @@
 		<dependency>
 			<groupId>net.sourceforge.csvjdbc</groupId>
 			<artifactId>csvjdbc</artifactId>
-			<version>1.0.25</version>
+			<version>1.0.29</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.sqlsheet</groupId>
