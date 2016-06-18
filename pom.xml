@@ -171,11 +171,6 @@
 			<artifactId>csvjdbc</artifactId>
 			<version>1.0.29</version>
 		</dependency>
-		<dependency>
-			<groupId>com.google.code.sqlsheet</groupId>
-			<artifactId>sqlsheet</artifactId>
-			<version>6.5</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
