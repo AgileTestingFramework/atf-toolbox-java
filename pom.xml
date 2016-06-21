@@ -68,10 +68,6 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>repo</id>
-			<url>file://${basedir}/repo</url>
-		</repository>
 	    <repository>
 	        <id>repo-liferay</id>
 	        <name>oss-liferay</name>
