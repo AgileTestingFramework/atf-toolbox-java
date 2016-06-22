@@ -34,7 +34,7 @@ public class ScreenImageAutomationManager
 	/**
 	 * saveBufferedImage Buffered image will be saved to the configured buffered
 	 * image save location + fileName
-	 * 
+	 *
 	 * @param fileName
 	 *            file name to save image as
 	 * @param imageToSave
@@ -62,7 +62,7 @@ public class ScreenImageAutomationManager
 
 	/**
 	 * isImageDisplayed
-	 * 
+	 *
 	 * @param screenRegionToSearch
 	 *            the screen region to attempt to locate the image pattern
 	 * @param imagePattern
@@ -76,12 +76,12 @@ public class ScreenImageAutomationManager
 
 	/**
 	 * isImageDisplayed
-	 * 
+	 *
 	 * @param screenRegionToSearch
 	 *            the screen region to attempt to locate the image pattern
 	 * @param imagePattern
 	 *            image pattern to match (Will look in resources)
-	 * @param implicitWait
+	 * @param implicitWaitTime
 	 *            wait time for image to match in milliseconds
 	 * @return TRUE if image if found, FALSE if image is not found within the
 	 *         time allocated
@@ -96,7 +96,7 @@ public class ScreenImageAutomationManager
 
 	/**
 	 * isImageDisplayed
-	 * 
+	 *
 	 * @param screenRegionToSearch
 	 *            screenRegionToSearch the screen region to attempt to locate
 	 *            the image pattern
@@ -112,13 +112,13 @@ public class ScreenImageAutomationManager
 
 	/**
 	 * isImageDisplayed
-	 * 
+	 *
 	 * @param screenRegionToSearch
 	 *            screenRegionToSearch the screen region to attempt to locate
 	 *            the image pattern
 	 * @param imagePatternFile
 	 *            image pattern file to use to match
-	 * @param implicitWait
+	 * @param implicitWaitTime
 	 *            wait time for image to match in milliseconds
 	 * @return TRUE if image if found, FALSE if image is not found within the
 	 *         time allocated

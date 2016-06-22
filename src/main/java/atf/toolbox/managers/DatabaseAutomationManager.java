@@ -40,10 +40,10 @@ public class DatabaseAutomationManager
 	 * AddDatabaseService Adds a Database Service to the collection with the key
 	 * provided If the key already exists, the Database Service will be replaced
 	 * within the collection
-	 * 
+	 *
 	 * @param key
 	 *            the Database Service in the collection
-	 * @param databaseService
+	 * @param dataSource
 	 *            instance of DatabaseService
 	 */
 	public void addDatabaseService(String key, BasicDataSource dataSource)
@@ -62,7 +62,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * RemoveDatabaseService
-	 * 
+	 *
 	 * @param key
 	 *            key to locate the Database Service to remove from the
 	 *            collection
@@ -89,7 +89,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getDatabaseSource
-	 * 
+	 *
 	 * @param key
 	 *            used to locate the database source
 	 * @return the BasicDataSource located for the key provided
@@ -109,7 +109,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getPrimaryDatabaseSource
-	 * 
+	 *
 	 * @return the Primary BasicDataSource
 	 */
 	public BasicDataSource getPrimaryDatabaseSource()
@@ -119,7 +119,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * SelectStatementColumnBuilder
-	 * 
+	 *
 	 * @param columnsToReturn
 	 *            columns to return from a select statement
 	 * @return list of columns to return
@@ -141,7 +141,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * createPrimaryDataSource
-	 * 
+	 *
 	 * @return BasicDataSource based on the configuration
 	 */
 	private BasicDataSource createPrimaryDataSource()
@@ -151,7 +151,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * createBasicDataSource
-	 * 
+	 *
 	 * @param dbDriver
 	 *            database driver
 	 * @param dbUser
@@ -184,7 +184,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * selectData Will use the PRIMARY datasource
-	 * 
+	 *
 	 * @param selectStmnt
 	 *            squiggle sql select query
 	 *            (https://github.com/gchauvet/squiggle-sql)
@@ -197,9 +197,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * selectData Will use the PRIMARY datasource
-	 * 
-	 * @param dataSourceKey
-	 *            the key to locate the datasource to use
+	 *
 	 * @param selectStmnt
 	 *            string representation of the sql statement to execute
 	 * @return ResultSet of the statement execution
@@ -211,7 +209,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * selectData
-	 * 
+	 *
 	 * @param dataSourceKey
 	 *            the key to locate the datasource to use
 	 * @param selectStmnt
@@ -226,7 +224,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * selectData
-	 * 
+	 *
 	 * @param dataSourceKey
 	 *            the key to locate the datasource to use
 	 * @param selectStmnt
@@ -295,7 +293,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getTables Primary datasource will be used
-	 * 
+	 *
 	 * @return a list of tables
 	 */
 	public List<String> getTables()
@@ -305,7 +303,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getTables
-	 * 
+	 *
 	 * @param datasourceKey
 	 *            datasource to use
 	 * @return a list of tables
@@ -360,7 +358,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getPrimaryKeyForTable
-	 * 
+	 *
 	 * @param tableName
 	 *            name of table to retrieve primary key
 	 * @return name of primary key
@@ -372,7 +370,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getPrimaryKeyForTable
-	 * 
+	 *
 	 * @param datasourceKey
 	 *            datasource to use
 	 * @param tableName
@@ -425,7 +423,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getColumnsAndTypes Will use primary datasource
-	 * 
+	 *
 	 * @param tableName
 	 *            name of table to retrieve columns and data types
 	 * @return list of String column name and Types data type
@@ -437,7 +435,7 @@ public class DatabaseAutomationManager
 
 	/**
 	 * getColumnsAndTypes
-	 * 
+	 *
 	 * @param dataSourceKey
 	 *            datasource to use
 	 * @param tableName
