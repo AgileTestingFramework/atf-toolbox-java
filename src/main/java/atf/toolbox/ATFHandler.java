@@ -28,7 +28,7 @@ public class ATFHandler
 
 	/**
 	 * ATFHandler.getInstance
-	 * 
+	 *
 	 * @return the instance of the AFTHandler
 	 */
 	public static ATFHandler getInstance()
@@ -55,6 +55,7 @@ public class ATFHandler
 
 	/**
 	 * getWebAutomation Used to perform web automation tasks
+	 * @return the instance of the WebAutomationManager
 	 */
 	public WebAutomationManager getWebAutomation()
 	{
@@ -80,6 +81,7 @@ public class ATFHandler
 
 	/**
 	 * getDatabaseAutomation Used to perform database automation tasks
+	 * @return the instance of the DatabaseAutomationManager
 	 */
 	public DatabaseAutomationManager getDatabaseAutomation()
 	{
@@ -105,6 +107,7 @@ public class ATFHandler
 
 	/**
 	 * getWebServiceAutomation Used to perform web service automation tasks
+	 * @return the instance of the WebServiceAutomationManager
 	 */
 	public WebServiceAutomationManager getWebServiceAutomation()
 	{
@@ -130,6 +133,7 @@ public class ATFHandler
 
 	/**
 	 * getMobileAutomation Used to perform mobile automation tasks
+	 * @return the instance of the MobileAutomationManager
 	 */
 	public MobileAutomationManager getMobileAutomation()
 	{
@@ -156,6 +160,7 @@ public class ATFHandler
 	/**
 	 * getScreenImageAutomation Used to perform screen and image automation
 	 * tasks
+	 * @return the instance of the ScreenImageAutomationManager
 	 */
 	public ScreenImageAutomationManager getScreenImageAutomation()
 	{

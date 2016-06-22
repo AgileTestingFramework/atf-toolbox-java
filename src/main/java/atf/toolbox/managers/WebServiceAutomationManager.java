@@ -50,7 +50,7 @@ public class WebServiceAutomationManager
 	/**
 	 * createWebServiceContext - Create the instance of the JAXBContext to use
 	 * within this service
-	 * 
+	 *
 	 * @param webServiceContextPath
 	 */
 	private JAXBContext createWebServiceContext(String webServiceContextPath)
@@ -71,7 +71,7 @@ public class WebServiceAutomationManager
 	 * addSoapService Adds a Soap Service to the collection with the key
 	 * provided If the key already exists, the Soap Service will be replaced
 	 * within the collection
-	 * 
+	 *
 	 * @param key
 	 *            the key for the Soap Service in the collection
 	 * @param webService
@@ -93,7 +93,7 @@ public class WebServiceAutomationManager
 
 	/**
 	 * removeSoapService
-	 * 
+	 *
 	 * @param key
 	 *            key to locate the Soap Service to remove from the collection
 	 */
@@ -119,7 +119,7 @@ public class WebServiceAutomationManager
 
 	/**
 	 * getWebSource
-	 * 
+	 *
 	 * @param key
 	 *            used to locate the web source
 	 * @return the WebService located for the key provided
@@ -139,14 +139,14 @@ public class WebServiceAutomationManager
 
 	/**
 	 * sendSoapMessage Connect to the service, will log the request and response
-	 * 
+	 *
 	 * @param webServiceKey
 	 *            the key to locate which web service to use
 	 * @param request
 	 *            - SoapMessage to send to the service
 	 * @return - SoapMessage response
-	 * @throws MalformedURLException
-	 * @throws SOAPException
+	 * @throws MalformedURLException - if there was an error creating the endpoint Connection
+	 * @throws SOAPException - if there was an error creating the SOAP Connection
 	 */
 	public SOAPMessage sendSoapMessage(String webServiceKey, SOAPMessage request) throws MalformedURLException, SOAPException
 	{
@@ -181,13 +181,15 @@ public class WebServiceAutomationManager
 
 	/**
 	 * callSoapServiceAndGenerateSOAPMessage
-	 * 
+	 *
+	 * @param webServiceKey
+	 *            - the key to locate which web service to use
 	 * @param request
 	 *            - request object containing the body of the soap message
 	 * @return - response from service call
-	 * @throws MalformedURLException
-	 * @throws SOAPException
-	 * @throws JAXBException
+	 * @throws MalformedURLException - if there was an error creating the endpoint Connection
+	 * @throws SOAPException - if there was an error creating the SOAP Connection
+	 * @throws JAXBException - if there was an error marshalling the SOAP Message
 	 */
 	public SOAPMessage callSoapServiceAndGenerateSOAPMessage(String webServiceKey, Object request) throws MalformedURLException, SOAPException, JAXBException
 	{
@@ -199,7 +201,7 @@ public class WebServiceAutomationManager
 
 	/**
 	 * createSOAPRequestMessage - create a SOAP message from an object
-	 * 
+	 *
 	 * @param webServiceKey
 	 *            key to locate the web service
 	 * @param request
@@ -207,8 +209,8 @@ public class WebServiceAutomationManager
 	 * @param action
 	 *            - SOAP Action string
 	 * @return SOAPMessage
-	 * @throws SOAPException
-	 * @throws JAXBException
+	 * @throws SOAPException - if there was an error creating the SOAP Connection
+	 * @throws JAXBException - if there was an error marshalling the SOAP Message
 	 */
 	private SOAPMessage createSOAPRequestMessage(String webServiceKey, Object request, String action) throws SOAPException, JAXBException
 	{
@@ -239,11 +241,11 @@ public class WebServiceAutomationManager
 
 	/**
 	 * extractDocument
-	 * 
+	 *
 	 * @param message
 	 *            SOAPMessage with document to be extracted
 	 * @return Document extracted from the message body
-	 * @throws SOAPException
+	 * @throws SOAPException - if there was an error creating the SOAP Connection
 	 */
 	public Document extractDocument(SOAPMessage message) throws SOAPException
 	{
@@ -256,7 +258,9 @@ public class WebServiceAutomationManager
 
 	/**
 	 * extractDocument
-	 * 
+	 *
+	 * @param contextPath - the context path for the webservice
+	 *
 	 * @param message
 	 *            SOAPMessage with document to be extracted and unmashalled
 	 * @return SOAPBody extracted from the message and unmarshalled, null if
@@ -269,7 +273,7 @@ public class WebServiceAutomationManager
 
 	/**
 	 * unmarshallObject
-	 * 
+	 *
 	 * @param webServiceContextPath
 	 *            the context path for the webservice
 	 * @param message
@@ -300,12 +304,16 @@ public class WebServiceAutomationManager
 
 	/**
 	 * marshallObject
-	 * 
+	 *
+	 * @param webServiceContextPath
+	 *            the context path for the webservice
 	 * @param request
 	 *            the content tree to be marshalled
 	 * @param body
 	 *            , will contain the updated XML content after unmashalling
-	 * @throws JAXBException
+	 * @return - the original request object
+	 *
+	 * @throws JAXBException - if there was an error marshalling the SOAP Message
 	 */
 	public Object marshallObject(String webServiceContextPath, Object request, SOAPBody body) throws JAXBException
 	{
@@ -317,7 +325,7 @@ public class WebServiceAutomationManager
 
 	/**
 	 * logSOAPMessage
-	 * 
+	 *
 	 * @param message
 	 *            - SOAPMessage to log
 	 * @param logMsg
@@ -360,7 +368,7 @@ public class WebServiceAutomationManager
 
 	/**
 	 * getSoapBodyXMLFromMessage
-	 * 
+	 *
 	 * @param response
 	 *            SOAPMessage response
 	 * @return String representation of the SOAPBody

@@ -17,7 +17,7 @@ public class ScenarioData {
 	private String scenarioFullName;
 	private String testCaseFullName;
 	private Map<String, Object> scenarioParameters;
-	
+
 	public ScenarioData() {
 		this("unNamed Scenario");
 	}
@@ -28,10 +28,12 @@ public class ScenarioData {
 		scenarioFullName = scenarioName;
 		testCaseFullName = testCaseName;
 		scenarioParameters = new HashMap<String, Object>();
-	}	
+	}
 	/**
 	 * putScenarioData
 	 * Will put the key and overwrite if an existing data value was already present
+	 * @param parameterKey key name to use
+	 * @param parameterData value to use
 	 */
 	public void putScenarioData(String parameterKey, Object parameterData)
 	{
@@ -42,6 +44,8 @@ public class ScenarioData {
 	 * @param overwriteIfKeyFound if TRUE, will overwrite an existing value
 	 * if FALSE, will not overwrite an existing data value
 	 * if no matching key is found, will add the new key and value
+	 * @param parameterKey key name to use
+	 * @param parameterData value to use
 	 */
 	public void putScenarioData(String parameterKey, Object parameterData, boolean overwriteIfKeyFound) {
 		if (ParameterDataTypeIsSupported(parameterData.getClass())) {
@@ -55,7 +59,7 @@ public class ScenarioData {
 			}
 		}
 	}
-	
+
 	/**
 	 * getScenarioName
 	 * @return the name of the Scenario
@@ -77,7 +81,7 @@ public class ScenarioData {
 	public void setTestCaseName(String testCaseName) {
 		testCaseFullName = testCaseName;
 	}
-	
+
 	public int getIntParameterData(String parameterKey) {
 		return Integer.parseInt(scenarioParameters.get(parameterKey).toString());
 	}
@@ -105,7 +109,7 @@ public class ScenarioData {
 	public String getStringParameterData(String parameterKey) {
 		return scenarioParameters.get(parameterKey).toString();
 	}
-	
+
     private boolean ParameterDataTypeIsSupported(Class<?> clazz)
     {
         return SUPPORTED_TYPES.contains(clazz);
@@ -126,14 +130,14 @@ public class ScenarioData {
         ret.add(Date.class);
         return ret;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
         builder.append("Scenario [name=").append(scenarioFullName).append("]");
         return builder.toString();
     }
-    
+
     public String getParameters()
     {
     	String[] list = scenarioParameters.values().toArray(new String[scenarioParameters.size()]);

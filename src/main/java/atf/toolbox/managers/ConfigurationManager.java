@@ -20,13 +20,13 @@ public class ConfigurationManager {
 	private static Logger log = LoggerFactory.getLogger(ConfigurationManager.class);
 	private String defaultConfigurationFileName = "atf-config.xml";
 
-	
+
 	private static ConfigurationManager atfConfigurationInstance;
 	private ConfigurationManager() { loadConfiguration(); }
 
 	/**
 	 * ConfigurationManager.getInstance
-	 * 
+	 *
 	 * @return the instance of the ConfigurationManager
 	 */
 	public static ConfigurationManager getInstance() {
@@ -43,7 +43,7 @@ public class ConfigurationManager {
 		}
 		return atfConfigurationInstance;
 	}
-	
+
 	/**
 	 * AllConfiguration
 	 * Contains all configuration entries
@@ -54,20 +54,20 @@ public class ConfigurationManager {
 	{
 		Properties sysProps = System.getProperties();
         String configFileName = sysProps.getProperty("test.config.filename");
-        
+
         if (StringUtils.isEmpty(configFileName)) {
         	configFileName = defaultConfigurationFileName;
         }
-        
+
         try {
         	AllConfiguration = new DefaultConfigurationBuilder(configFileName).getConfiguration();
             ((HierarchicalConfiguration) AllConfiguration).setExpressionEngine(new XPathExpressionEngine());
         } catch (Exception e) {
             Fail.fail("failed to read config file", e);
             log.error("Failed to read config file", e);
-        }		
+        }
 	}
-	
+
     /**
      * RefreshConfiguration
      * Read the configuration and refresh
@@ -77,7 +77,7 @@ public class ConfigurationManager {
     	AllConfiguration = null;
     	loadConfiguration();
     }
-    
+
     /**
      * getBooleanConfigEntry
      * @param xPathKey - Key in XPath format to locate in loaded config file
@@ -98,23 +98,23 @@ public class ConfigurationManager {
     		}
         	else return null;
     }
-    
+
     /**
      * getListEntry
-     * @param xPathKey
-     * @return List of strings. Will return empty List<string> if not found.
+     * @param xPathKey key name to use
+     * @return List of strings. Will return empty List&lt;string&gt; if not found.
      */
     public List<String> getListEntry(String xPathKey)
     {
     	List<String> listOfConfig = new ArrayList<String>();
-    	
+
     	if (AllConfiguration.containsKey(xPathKey)) {
     		listOfConfig = Lists.transform(AllConfiguration.getList(xPathKey), Functions.toStringFunction());
     	}
-    	
+
     	return listOfConfig;
     }
-    
+
     /**
      * getStringEntry
      * @param xPathKey - Key in XPath format to locate in loaded config file
@@ -131,7 +131,7 @@ public class ConfigurationManager {
     		return returnValue;
     	}
     }
-    
+
     /**
      * getIntEntry
      * @param xPathKey - Key in XPath format to locate in loaded config file
@@ -148,28 +148,29 @@ public class ConfigurationManager {
     		return null;
     	}
     }
-    
+
     public void Teardown()
     {
     	// TODO: any specific teardown required for the Configuration Manager
     }
-    
-	/********************************************************************************/
-	/************* CONFIGURATION GET METHODS BELOW **********************************/
-	/********************************************************************************/    
-    
-	/********************************************************************************/
-	/************* WEB **************************************************************/
-	/********************************************************************************/
+
+
+	//****************************************************************************//
+	//*********** CONFIGURATION GET METHODS BELOW ********************************//
+	//****************************************************************************//
+
+	//****************************************************************************//
+	//*********** WEB ************************************************************//
+	//****************************************************************************//
     public String getWebBaseUrl()
     {
     	String key = "atf/web/base-url";
     	return getStringEntry(key);
     }
-    
-	/********************************************************************************/
-	/************* DESIRED CAPABILITIES**********************************************/
-	/********************************************************************************/
+
+	//****************************************************************************//
+	//*********** DESIRED CAPABILITIES********************************************//
+	//****************************************************************************//
     public String getWebBrowserName()
     {
     	String key = "atf/desired-capabilities/browser-name";
@@ -209,31 +210,31 @@ public class ConfigurationManager {
     public Boolean getDatabaseEnabled() {
     	String key = "atf/desired-capabilities/database-enabled";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getLocationContextEnabled() {
     	String key = "atf/desired-capabilities/location-context-enabled";
     	return getBooleanConfigEntry(key);
-    }     
+    }
     public Boolean getApplicationCacheEnabled() {
     	String key = "atf/desired-capabilities/application-cache-enabled";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getBrowserConnectionEnabled() {
     	String key = "atf/desired-capabilities/browser-connection-enabled";
     	return getBooleanConfigEntry(key);
-    }      
+    }
     public Boolean getWebStorageEnabled() {
     	String key = "atf/desired-capabilities/web-storage-enabled";
     	return getBooleanConfigEntry(key);
-    }     
+    }
     public Boolean getAcceptSSLCerts() {
     	String key = "atf/desired-capabilities/accept-ssl-certs";
     	return getBooleanConfigEntry(key);
-    }      
+    }
     public Boolean getRotatable() {
     	String key = "atf/desired-capabilities/rotatable";
     	return getBooleanConfigEntry(key);
-    }      
+    }
     public Boolean getNativeEvents() {
     	String key = "atf/desired-capabilities/native-events";
     	return getBooleanConfigEntry(key);
@@ -241,35 +242,35 @@ public class ConfigurationManager {
     public String getUnexpectedAlertBehavior() {
     	String key = "atf/desired-capabilities/unexpected-alert-behavior";
     	return getStringEntry(key);
-    }    
+    }
     public Integer getElementScrollBehavior() {
     	String key = "atf/desired-capabilities/element-scroll-behavior";
     	return getIntEntry(key);
-    }     
+    }
     public String getJSONProxyType() {
     	String key = "atf/desired-capabilities/json-proxy-type";
     	return getStringEntry(key);
-    }      
+    }
     public String getJSONProxyAutoConfigURL() {
     	String key = "atf/desired-capabilities/json-proxy-auto-config-url";
     	return getStringEntry(key);
-    }    
+    }
     public String getJSONProxy() {
     	String key = "atf/desired-capabilities/json-proxy";
     	return getStringEntry(key);
-    }    
+    }
     public String getJSONSocksUsername() {
     	String key = "atf/desired-capabilities/json-socks-username";
     	return getStringEntry(key);
-    }    
+    }
     public String getJSONSocksPassword() {
     	String key = "atf/desired-capabilities/json-socks-password";
     	return getStringEntry(key);
-    }    
+    }
     public String getJSONNoProxy() {
     	String key = "atf/desired-capabilities/json-no-proxy";
     	return getStringEntry(key);
-    }    
+    }
     public String getJSONLoggingComponent() {
     	String key = "atf/desired-capabilities/json-logging-component";
     	return getStringEntry(key);
@@ -277,7 +278,7 @@ public class ConfigurationManager {
     public Boolean getRemoteWebDriverQuietExceptions() {
     	String key = "atf/desired-capabilities/remote-webdriver-quiet-exceptions";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getUseGrid() {
     	String key = "atf/desired-capabilities/grid-use";
     	return getBooleanConfigEntry(key);
@@ -285,66 +286,66 @@ public class ConfigurationManager {
     public String getGridUrl() {
     	String key = "atf/desired-capabilities/grid-url";
     	return getStringEntry(key);
-    }   
+    }
     public String getGridSeleniumProtocol() {
     	String key = "atf/desired-capabilities/grid-selenium-protocol";
     	return getStringEntry(key);
-    }     
+    }
     public Integer getGridMaxInstances() {
     	String key = "atf/desired-capabilities/grid-max-instances";
     	return getIntEntry(key);
-    }    
-  
-    
+    }
+
+
     // OPERA
     public String getOperaBinary() {
     	String key = "atf/desired-capabilities/opera/binary";
     	return getStringEntry(key);
-    }     
+    }
     public Boolean getOperaGuessBinaryPath() {
     	String key = "atf/desired-capabilities/opera/guess-binary-path";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getOperaNoRestart() {
     	String key = "atf/desired-capabilities/opera/no-restart";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public String getOperaProduct() {
     	String key = "atf/desired-capabilities/opera/product";
     	return getStringEntry(key);
-    }     
+    }
     public Boolean getOperaNoQuit() {
     	String key = "atf/desired-capabilities/opera/no-quit";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getOperaAutoStart() {
     	String key = "atf/desired-capabilities/opera/autostart";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Integer getOperaDisplay() {
     	String key = "atf/desired-capabilities/opera/display";
     	return getIntEntry(key);
-    }    
+    }
     public Boolean getOperaIdle() {
     	String key = "atf/desired-capabilities/opera/idle";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public String getOperaProfileDirectory() {
     	String key = "atf/desired-capabilities/opera/profile-directory";
     	return getStringEntry(key);
-    }    
+    }
     public String getOperaLauncher() {
     	String key = "atf/desired-capabilities/opera/launcher";
     	return getStringEntry(key);
-    }    
+    }
     public Integer getOperaPort() {
     	String key = "atf/desired-capabilities/opera/port";
     	return getIntEntry(key);
-    }    
+    }
     public String getOperaHost() {
     	String key = "atf/desired-capabilities/opera/host";
     	return getStringEntry(key);
-    } 
+    }
     public String getOperaArguments() {
     	String key = "atf/desired-capabilities/opera/arguments";
     	return getStringEntry(key);
@@ -356,8 +357,8 @@ public class ConfigurationManager {
     public String getOperaLoggingLevel() {
     	String key = "atf/desired-capabilities/opera/logging-level";
     	return getStringEntry(key);
-    } 
-    
+    }
+
     // CHROME
     public List<String> getChromeArgs() {
     	String key = "atf/desired-capabilities/chrome/cmndline-args";
@@ -374,21 +375,21 @@ public class ConfigurationManager {
     public String getChromeProxy() {
     	String key = "atf/desired-capabilities/chrome/proxy";
     	return getStringEntry(key);
-    }    
-    
+    }
+
     // FIREFOX
     public String getFirefoxProfileDirecotryAndFilename() {
     	String key = "atf/desired-capabilities/firefox/profile-dir-and-filename";
     	return getStringEntry(key);
-    }   
+    }
     public String getFirefoxBinary() {
     	String key = "atf/desired-capabilities/firefox/binary";
     	return getStringEntry(key);
-    }    
+    }
     public String getFirefoxRCMode() {
     	String key = "atf/desired-capabilities/firefox/rc-mode";
     	return getStringEntry(key);
-    }    
+    }
     public Boolean getFirefoxRCCaptureNetworkTraffic() {
     	String key = "atf/desired-capabilities/firefox/rc-capture-network-traffic";
     	return getBooleanConfigEntry(key);
@@ -408,7 +409,7 @@ public class ConfigurationManager {
     public Boolean getFirefoxAssumeUntrustedIssuer() {
     	String key = "atf/desired-capabilities/firefox/webdriver-assume-untrusted-issuer";
     	return getBooleanConfigEntry(key);
-    }   
+    }
     public String getFirefoxLogDriverLevel() {
     	String key = "atf/desired-capabilities/firefox/webdriver-log-driver-level";
     	return getStringEntry(key);
@@ -425,93 +426,93 @@ public class ConfigurationManager {
     	String key = "atf/desired-capabilities/firefox/webdriver-port";
     	return getIntEntry(key);
     }
-    
+
     // INTERNET EXPLORER
     public Boolean getIEIgnoreProtectedModeSettings() {
     	String key = "atf/desired-capabilities/ie/ignore-protected-mode-settings";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getIEIgnoreZoomSetting() {
     	String key = "atf/desired-capabilities/ie/ignore-zoom-setting";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public String getIEInitialBrowserURL() {
     	String key = "atf/desired-capabilities/ie/initial-browser-url";
     	return getStringEntry(key);
-    }    
+    }
     public Boolean getIEEnablePersistentHover() {
     	String key = "atf/desired-capabilities/ie/enable-persistent-hover";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getIEEnableElementCacheCleanup() {
     	String key = "atf/desired-capabilities/ie/enable-element-cache-cleanup";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getIERequireWindowFocus() {
     	String key = "atf/desired-capabilities/ie/require-window-focus";
     	return getBooleanConfigEntry(key);
-    }     
+    }
     public Integer getIEBrowserAttachTimeout() {
     	String key = "atf/desired-capabilities/ie/browser-attach-timeout";
     	return getIntEntry(key);
-    }    
+    }
     public Boolean getIEForceCreateProcessAPI() {
     	String key = "atf/desired-capabilities/ie/force-create-process-api";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public String getIEBrowserCmdLineSwitches() {
     	String key = "atf/desired-capabilities/ie/browser-cmd-line-switches";
     	return getStringEntry(key);
-    }    
+    }
     public Boolean getIEUsePerProcessProxy() {
     	String key = "atf/desired-capabilities/ie/use-per-process-proxy";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getIEEnsureCleanSession() {
     	String key = "atf/desired-capabilities/ie/ensure-clean-session";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public String getIELogFile() {
     	String key = "atf/desired-capabilities/ie/log-file";
     	return getStringEntry(key);
-    } 
+    }
     public String getIELogLevel() {
     	String key = "atf/desired-capabilities/ie/log-level";
     	return getStringEntry(key);
-    } 
+    }
     public String getIEHost() {
     	String key = "atf/desired-capabilities/ie/host";
     	return getStringEntry(key);
-    } 
+    }
     public String getIEExtractPath() {
     	String key = "atf/desired-capabilities/ie/extract-path";
     	return getStringEntry(key);
-    } 
+    }
     public Boolean getIESilent() {
     	String key = "atf/desired-capabilities/ie/silent";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getIESetProxyByServer() {
     	String key = "atf/desired-capabilities/ie/set-proxy-by-server";
     	return getBooleanConfigEntry(key);
-    }   
+    }
     public String getIERCMode() {
     	String key = "atf/desired-capabilities/ie/rc-mode";
     	return getStringEntry(key);
-    } 
+    }
     public Boolean getIERCKillProcessByName() {
     	String key = "atf/desired-capabilities/ie/rc-kill-processes-by-name";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getIERCHonorSystemProxy() {
     	String key = "atf/desired-capabilities/ie/rc-honor-system-proxy";
     	return getBooleanConfigEntry(key);
-    }    
+    }
     public Boolean getIERCEnsureCleanSession() {
     	String key = "atf/desired-capabilities/ie/rc-ensure-clean-session";
     	return getBooleanConfigEntry(key);
-    }    
-    
+    }
+
     // SAFARI
     public Boolean getSafariUseOptions() {
     	String key = "atf/desired-capabilities/safari/use-options";
@@ -528,12 +529,12 @@ public class ConfigurationManager {
     public String getSafariRCMode() {
     	String key = "atf/desired-capabilities/safari/rc-mode";
     	return getStringEntry(key);
-    } 
+    }
     public Boolean getSafariRCHonorSystemProxy() {
     	String key = "atf/desired-capabilities/safari/rc-honor-system-proxy";
     	return getBooleanConfigEntry(key);
-    }    
-    
+    }
+
     // PHANTOMJS
     public String getPhantomJSExecutablePath() {
     	String key = "atf/desired-capabilities/phantomjs/executable-path-property";
@@ -558,69 +559,69 @@ public class ConfigurationManager {
     public String getPhantomJSCLIArgs() {
     	String key = "atf/desired-capabilities/phantomjs/cli-args";
     	return getStringEntry(key);
-    } 
-    
-    
-	/********************************************************************************/
-	/************* REPORTING  *******************************************************/
-	/********************************************************************************/
+    }
+
+
+	//****************************************************************************//
+	//*********** REPORTING  *****************************************************//
+	//****************************************************************************//
     public Boolean getWebUseJSErrorCollectorWithFirefox() {
     	String key = "atf/reporting/use-jserrorcollector-with-firefox";
     	return getBooleanConfigEntry(key);
-    }      
+    }
     public String getBufferedImageSaveLocation() {
     	String key = "atf/reporting/buffered-image-save-location";
-    	return getStringEntry(key);   	
+    	return getStringEntry(key);
     }
     public String getBufferedImageSaveFormat() {
     	String key = "atf/reporting/buffered-image-save-format";
-    	return getStringEntry(key);   	
+    	return getStringEntry(key);
     }
     public String getTakesScreenshotSaveLocation() {
     	String key = "atf/reporting/takes-screenshot-save-location";
-    	return getStringEntry(key);   	
+    	return getStringEntry(key);
     }
-	/********************************************************************************/
-	/************* LOCALIZATION  ****************************************************/
-	/********************************************************************************/
+	//****************************************************************************//
+	//*********** LOCALIZATION  **************************************************//
+	//****************************************************************************//
     public String getLocalizationLocale()
     {
     	String key = "atf/localization/locale";
-    	return getStringEntry(key);   	
+    	return getStringEntry(key);
     }
     public String getLocalizationResourcePath()
     {
     	String key = "atf/localization/resource-path";
-    	return getStringEntry(key);   	
-    } 
-        
-	/********************************************************************************/
-	/************* DATABASE *********************************************************/
-	/********************************************************************************/
+    	return getStringEntry(key);
+    }
+
+	//****************************************************************************//
+	//*********** DATABASE *******************************************************//
+	//****************************************************************************//
     public String getDatabaseDriver()
     {
     	String key = "atf/database/db-driver";
-    	return getStringEntry(key);   	
-    } 
+    	return getStringEntry(key);
+    }
     public String getDatabaseUser()
     {
     	String key = "atf/database/db-user";
-    	return getStringEntry(key);   	
+    	return getStringEntry(key);
     }
     public String getDatabasePassword()
     {
     	String key = "atf/database/db-password";
-    	return getStringEntry(key);   	
+    	return getStringEntry(key);
     }
     public String getDatabaseUrl()
     {
     	String key = "atf/database/db-url";
-    	return getStringEntry(key);   	
+    	return getStringEntry(key);
     }
-    
-	/********************************************************************************/
-	/************* MOBILE - COMMON **************************************************/
-	/********************************************************************************/
+
+	//****************************************************************************//
+	//*********** MOBILE - COMMON ************************************************//
+	//****************************************************************************//
 	public boolean getMobileAppiumStartNodeServer() {
 		String key = "atf/mobile/common/appiumStartNodeServer";
 		return getBooleanConfigEntry(key);
@@ -657,7 +658,7 @@ public class ConfigurationManager {
 	{
 		String key = "atf/mobile/common/deviceName";
     	return getStringEntry(key);
-	}   
+	}
 	public String getMobileDeviceType() {
 		String key = "atf/mobile/common/deviceType";
 		return getStringEntry(key);
@@ -673,11 +674,11 @@ public class ConfigurationManager {
 	public Integer getMobileNewCommandTimeout() {
 		String key = "atf/mobile/common/newCommandTimeout";
     	return getIntEntry(key);
-	}	
+	}
 	public String getMobileBrowserPlatform()
 	{
     	String key = "atf/mobile/common/platformName";
-    	return getStringEntry(key);		
+    	return getStringEntry(key);
 	}
 	public Boolean getMobileAutoLaunch() {
 		String key = "atf/mobile/common/autoLaunch";
@@ -712,9 +713,9 @@ public class ConfigurationManager {
 		return getBooleanConfigEntry(key);
 	}
 
-	/********************************************************************************/
-	/************* MOBILE - ANDROID *************************************************/
-	/********************************************************************************/
+	//****************************************************************************//
+	//*********** MOBILE - ANDROID ***********************************************//
+	//****************************************************************************//
 	public String getMobileApplicationActivity() {
 		String key = "atf/mobile/android/appActivity";
 		return getStringEntry(key);
@@ -731,7 +732,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/android/appWaitPackage";
 		return getStringEntry(key);
 	}
-	public Integer getMobileDeviceReadyTimeout() {	
+	public Integer getMobileDeviceReadyTimeout() {
 		String key = "atf/mobile/android/deviceReadyTimeout";
 		return getIntEntry(key);
 	}
@@ -746,11 +747,11 @@ public class ConfigurationManager {
 	public Integer getMobileAndroidDeviceReadyTimeout() {
 		String key = "atf/mobile/android/androidDeviceReadyTimeout";
 		return getIntEntry(key);
-	}	
+	}
 	public Integer getMobileAndroidDeviceSocket() {
 		String key = "atf/mobile/android/androidDeviceSocket";
 		return getIntEntry(key);
-	}	
+	}
 	public String getMobileAVD() {
 		String key = "atf/mobile/android/avd";
 		return getStringEntry(key);
@@ -766,7 +767,7 @@ public class ConfigurationManager {
 	public String getMobileAVDArguments() {
 		String key = "atf/mobile/android/avdArgs";
 		return getStringEntry(key);
-	}	
+	}
 	public Boolean getMobileUseKeystore() {
 		String key = "atf/mobile/android/useKeystore";
 		return getBooleanConfigEntry(key);
@@ -786,11 +787,11 @@ public class ConfigurationManager {
 	public String getMobileKeyPassword() {
 		String key = "atf/mobile/android/keyPassword";
 		return getStringEntry(key);
-	}	
+	}
 	public String getMobileChromeDriverExecutable() {
 		String key = "atf/mobile/android/chromedriverExecutable";
 		return getStringEntry(key);
-	}	
+	}
 	public Integer getMobileAutoWebviewTimeout() {
 		String key = "atf/mobile/android/autoWebviewTimeout";
 		return getIntEntry(key);
@@ -810,7 +811,7 @@ public class ConfigurationManager {
 	public String getMobileOptionalIntentArguments() {
 		String key = "atf/mobile/android/optionalIntentArguments";
 		return getStringEntry(key);
-	}	
+	}
 	public Boolean getMobileStopApplicationOnReset() {
 		String key = "atf/mobile/android/stopAppOnReset";
 		return getBooleanConfigEntry(key);
@@ -832,10 +833,10 @@ public class ConfigurationManager {
 		return getBooleanConfigEntry(key);
 	}
 
-	
-	/********************************************************************************/
-	/************* MOBILE - IOS *****************************************************/
-	/********************************************************************************/
+
+	//****************************************************************************//
+	//*********** MOBILE - IOS ***************************************************//
+	//****************************************************************************//
 	public String getMobileCalendarFormat() {
 		String key = "atf/mobile/ios/calendarFormat";
 		return getStringEntry(key);
@@ -844,7 +845,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/bundleId";
 		return getStringEntry(key);
 	}
-	public Integer getMobileLaunchTimeout() {	
+	public Integer getMobileLaunchTimeout() {
 		String key = "atf/mobile/ios/launchTimeout";
 		return getIntEntry(key);
 	}
@@ -900,7 +901,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/processArguments";
 		return getStringEntry(key);
 	}
-	public Integer getMobileInterKeyDelay() {	
+	public Integer getMobileInterKeyDelay() {
 		String key = "atf/mobile/ios/interKeyDelay";
 		return getIntEntry(key);
 	}
@@ -912,7 +913,7 @@ public class ConfigurationManager {
 		String key = "atf/mobile/ios/sendKeyStrategy";
 		return getStringEntry(key);
 	}
-	public Integer getMobileScreentimeWaitTimeout() {	
+	public Integer getMobileScreentimeWaitTimeout() {
 		String key = "atf/mobile/ios/screenshotWaitTimeout";
 		return getIntEntry(key);
 	}

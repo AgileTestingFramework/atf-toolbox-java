@@ -110,6 +110,7 @@ public class StringUtil {
      * <p>Generates a unique string not longer than a max length.</p>
      * @param prefixString Prepended to the generated unique string
      * @param maxLength Generated string is guaranteed not to be longer than this max length.
+     * @return - unique string
      */
     public static String uniqueString(String prefixString, int maxLength) {
         return uniqueString(prefixString, 0, maxLength);
@@ -118,6 +119,7 @@ public class StringUtil {
     /**
      * <p>Generates a unique string.</p>
      * @param prefixString Prepended to the generated unique string
+     * @return - unique string
      */
     public static String uniqueString(String prefixString) {
         return uniqueString(prefixString, 0, Integer.MAX_VALUE);
@@ -135,6 +137,7 @@ public class StringUtil {
      *            See {@link StringUtils#substring(String, int, int)}
      * @param end
      *            See {@link StringUtils#substring(String, int, int)}
+     * @return - unique string
      */
     public static String uniqueString(String prefixString, int start, int end) {
         return StringUtils.substring(prefixString + UUID.randomUUID().toString(), start, end);
@@ -142,6 +145,7 @@ public class StringUtil {
 
     /**
      * Creates a name looking something like "Tbxau Pdsaddwe".
+     * @return - random name
      */
     public static String randomName() {
         StringBuilder sb = new StringBuilder();
@@ -151,6 +155,10 @@ public class StringUtil {
         return sb.toString();
     }
 
+    /**
+     * Creates a name looking something like "Tbxau_Pdsaddwe@example.com".
+     * @return - random email
+     */
     public static String randomEmail() {
         StringBuilder sb = new StringBuilder();
         sb.append(StringUtils.capitalize(randomAlphaWord(5)));
@@ -160,6 +168,11 @@ public class StringUtil {
         return sb.toString();
     }
 
+    /**
+     * Creates an alpha word looking something like "Tbxau".
+     * @param length - of generated string.
+     * @return - random alpha word
+     */
     public static String randomAlphaWord(int length) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i += 1) {
@@ -179,6 +192,7 @@ public class StringUtil {
      * Returns a random integer within (inclusive) the given range.
      * @param min inclusive
      * @param max inclusive
+     * @return - random int
      */
     public static int randomInt(int min, int max) {
         return RandomUtils.nextInt((max - min) + 1) + min;
