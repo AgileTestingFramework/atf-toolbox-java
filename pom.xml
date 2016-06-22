@@ -288,7 +288,7 @@
 							<goal>jar</goal>
 						</goals>
 						<configuration>
-							<additionalparam>-Xdoclint all</additionalparam>
+							<additionalparam>-Xdoclint:all</additionalparam>
 						</configuration>
 					</execution>
 				</executions>
