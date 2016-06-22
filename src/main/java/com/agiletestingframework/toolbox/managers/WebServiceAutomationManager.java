@@ -1,4 +1,4 @@
-package atf.toolbox.managers;
+package com.agiletestingframework.toolbox.managers;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
-import atf.toolbox.interfaces.WebService;
+import com.agiletestingframework.toolbox.interfaces.WebService;
 
 public class WebServiceAutomationManager
 {

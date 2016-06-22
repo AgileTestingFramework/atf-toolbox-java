@@ -1,4 +1,4 @@
-package atf.toolbox.interfaces;
+package com.agiletestingframework.toolbox.interfaces;
 
 public interface WebService {
 	String getNamespaceURI();

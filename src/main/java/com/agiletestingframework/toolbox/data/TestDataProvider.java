@@ -1,6 +1,6 @@
-package atf.toolbox.data;
+package com.agiletestingframework.toolbox.data;
 
-import atf.toolbox.interfaces.DataDriver;
+import com.agiletestingframework.toolbox.interfaces.DataDriver;
 
 public class TestDataProvider
 {

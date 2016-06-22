@@ -1,4 +1,4 @@
-package atf.toolbox.util;
+package com.agiletestingframework.toolbox.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

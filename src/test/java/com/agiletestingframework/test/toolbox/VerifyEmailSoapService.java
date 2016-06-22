@@ -1,4 +1,4 @@
-package test.atf.toolbox;
+package com.agiletestingframework.test.toolbox;
 
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeaders;
@@ -11,8 +11,8 @@ import javax.xml.soap.SOAPPart;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import atf.toolbox.ATFHandler;
-import atf.toolbox.interfaces.WebService;
+import com.agiletestingframework.toolbox.ATFHandler;
+import com.agiletestingframework.toolbox.interfaces.WebService;
 
 public class VerifyEmailSoapService implements WebService
 {

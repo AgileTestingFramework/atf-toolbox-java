@@ -1,4 +1,4 @@
-package atf.toolbox.data;
+package com.agiletestingframework.toolbox.data;
 
 import java.util.ArrayList;
 import java.util.List;

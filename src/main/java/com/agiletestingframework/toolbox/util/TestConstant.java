@@ -1,4 +1,4 @@
-package atf.toolbox.util;
+package com.agiletestingframework.toolbox.util;
 
 public class TestConstant {
 	// Delay and Wait Constants

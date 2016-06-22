@@ -1,4 +1,4 @@
-package atf.toolbox.managers;
+package com.agiletestingframework.toolbox.managers;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;

@@ -1,4 +1,4 @@
-package atf.toolbox.managers;
+package com.agiletestingframework.toolbox.managers;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -31,8 +31,7 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import atf.toolbox.util.TestConstant;
-
+import com.agiletestingframework.toolbox.util.TestConstant;
 import com.opera.core.systems.OperaDriver;
 
 public class WebAutomationManager

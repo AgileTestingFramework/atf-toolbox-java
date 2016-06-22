@@ -1,4 +1,4 @@
-package atf.toolbox;
+package com.agiletestingframework.toolbox;
 
 import java.util.List;
 
@@ -8,12 +8,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import atf.toolbox.managers.ConfigurationManager;
-import atf.toolbox.managers.DatabaseAutomationManager;
-import atf.toolbox.managers.MobileAutomationManager;
-import atf.toolbox.managers.ScreenImageAutomationManager;
-import atf.toolbox.managers.WebAutomationManager;
-import atf.toolbox.managers.WebServiceAutomationManager;
+import com.agiletestingframework.toolbox.managers.ConfigurationManager;
+import com.agiletestingframework.toolbox.managers.DatabaseAutomationManager;
+import com.agiletestingframework.toolbox.managers.MobileAutomationManager;
+import com.agiletestingframework.toolbox.managers.ScreenImageAutomationManager;
+import com.agiletestingframework.toolbox.managers.WebAutomationManager;
+import com.agiletestingframework.toolbox.managers.WebServiceAutomationManager;
 
 public class ATFHandler
 {

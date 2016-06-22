@@ -1,4 +1,4 @@
-package atf.toolbox.managers;
+package com.agiletestingframework.toolbox.managers;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;

@@ -1,4 +1,4 @@
-package test.atf.toolbox;
+package com.agiletestingframework.test.toolbox;
 
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -7,10 +7,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import atf.toolbox.data.CSVDataDriver;
-import atf.toolbox.data.ExcelDataDriver;
-import atf.toolbox.data.ScenarioData;
-import atf.toolbox.data.TestDataProvider;
+import com.agiletestingframework.toolbox.data.CSVDataDriver;
+import com.agiletestingframework.toolbox.data.ExcelDataDriver;
+import com.agiletestingframework.toolbox.data.ScenarioData;
+import com.agiletestingframework.toolbox.data.TestDataProvider;
 
 public class ATFHandlerTest {
 	// Placeholder class to exercise the framework during development DO NOT REMOVE !!!

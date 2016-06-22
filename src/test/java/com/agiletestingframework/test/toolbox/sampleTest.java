@@ -1,6 +1,7 @@
-package test.atf.toolbox;
-import atf.toolbox.ATFHandler;
+package com.agiletestingframework.test.toolbox;
 import org.testng.annotations.Test;
+
+import com.agiletestingframework.toolbox.ATFHandler;
 
 /**
  * Created by kvarona on 5/17/2016.

@@ -1,4 +1,4 @@
-package atf.toolbox.data;
+package com.agiletestingframework.toolbox.data;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.jdom2.xpath.XPathFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import atf.toolbox.interfaces.DataDriver;
+import com.agiletestingframework.toolbox.interfaces.DataDriver;
 
 public class XMLDataDriver implements DataDriver
 {

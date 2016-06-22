@@ -1,6 +1,6 @@
-package atf.toolbox.interfaces;
+package com.agiletestingframework.toolbox.interfaces;
 
-import atf.toolbox.data.TestCaseData;
+import com.agiletestingframework.toolbox.data.TestCaseData;
 
 public interface DataDriver
 {

@@ -1,4 +1,4 @@
-package atf.toolbox.data;
+package com.agiletestingframework.toolbox.data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import atf.toolbox.interfaces.DataDriver;
+import com.agiletestingframework.toolbox.interfaces.DataDriver;
 
 /**
  * Created by jorge on 8/18/15.
