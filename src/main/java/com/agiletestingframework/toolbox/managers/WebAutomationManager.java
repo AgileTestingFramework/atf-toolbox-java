@@ -1,19 +1,10 @@
 package com.agiletestingframework.toolbox.managers;
 
-import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
+import com.agiletestingframework.toolbox.util.TestConstant;
+import com.opera.core.systems.OperaDriver;
 import org.apache.commons.lang.StringUtils;
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.Proxy;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver.Timeouts;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
@@ -31,23 +22,33 @@ import org.openqa.selenium.safari.SafariOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.agiletestingframework.toolbox.util.TestConstant;
-import com.opera.core.systems.OperaDriver;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class WebAutomationManager
 {
 
 	private static Logger log = LoggerFactory.getLogger(WebAutomationManager.class);
 
-	private WebDriver webDriver;
+	/**
+	 * getWebDriver
+	 *
+	 * @return the local instance of the webDriver. will create new instance if
+	 *         one doesn't already exist to return.
+	*/
+	public WebDriver getWebDriver() {
+		if (WebDriverManager.getDriver() == null) {
+			WebDriverManager.setWebDriver(webDriverSetup());
+		}
 
-	public WebDriver getWebDriver()
-	{
-		return webDriver;
+		return WebDriverManager.getDriver();
 	}
 
 	private TakesScreenshot takesScreenshot;
-
 	public TakesScreenshot getTakesScreenshot()
 	{
 		return takesScreenshot;
@@ -56,7 +57,6 @@ public class WebAutomationManager
 	public WebAutomationManager()
 	{
 		log.info("Initializing the WebAutomationManager.");
-		webDriver = webDriverSetup();
 	}
 
 	/**
@@ -92,13 +92,19 @@ public class WebAutomationManager
 
 			capabilities = setCommonCapabilities(capabilities);
 
-			FirefoxBinary binary = new FirefoxBinary();
+			FirefoxBinary binary = null;
 			File binaryFile = null;
-			if (ConfigurationManager.getInstance().getWebBrowserDownloadPath().length() > 0) binaryFile = new File(ConfigurationManager.getInstance().getWebBrowserDownloadPath());
+			if (ConfigurationManager.getInstance().getWebBrowserDownloadPath().length() > 0) {
+				binaryFile = new File(ConfigurationManager.getInstance().getWebBrowserDownloadPath());
+			}
 
 			if (binaryFile != null && binaryFile.exists())
 			{
 				binary = new FirefoxBinary(binaryFile);
+				System.setProperty("webdriver.firefox.bin", ConfigurationManager.getInstance().getWebBrowserDownloadPath());
+				capabilities.setCapability("binary", ConfigurationManager.getInstance().getWebBrowserDownloadPath());
+				capabilities.setCapability("firefox_binary", ConfigurationManager.getInstance().getWebBrowserDownloadPath());
+
 			}
 
 			FirefoxProfile profile = new FirefoxProfile();
@@ -124,6 +130,8 @@ public class WebAutomationManager
 			if (ConfigurationManager.getInstance().getFirefoxRCCaptureNetworkTraffic() != null) capabilities.setCapability("captureNetworkTraffic", ConfigurationManager.getInstance().getFirefoxRCCaptureNetworkTraffic());
 			if (ConfigurationManager.getInstance().getFirefoxRCAddCustomReqHeader() != null) capabilities.setCapability("addCustomRequestHeaders", ConfigurationManager.getInstance().getFirefoxRCAddCustomReqHeader());
 			if (ConfigurationManager.getInstance().getFirefoxRCTrustAllSSLCerts() != null) capabilities.setCapability("trustAllSSLCertificates", ConfigurationManager.getInstance());
+
+
 
 			if (ConfigurationManager.getInstance().getUseGrid() != null && !ConfigurationManager.getInstance().getUseGrid())
 			{
@@ -241,8 +249,8 @@ public class WebAutomationManager
 		else if (browserName.toLowerCase().contains("chrome"))
 		{
 			capabilities = DesiredCapabilities.chrome();
-
 			capabilities = setCommonCapabilities(capabilities);
+			System.setProperty("webdriver.chrome.driver", new File(ConfigurationManager.getInstance().getWebBrowserDownloadPath()).getAbsolutePath());
 
 			ChromeOptions options = new ChromeOptions();
 			if (ConfigurationManager.getInstance().getChromeArgs() != null && !ConfigurationManager.getInstance().getChromeArgs().isEmpty()) options.addArguments(ConfigurationManager.getInstance().getChromeArgs());
@@ -399,14 +407,13 @@ public class WebAutomationManager
 
 	public void teardown()
 	{
-		if (webDriver != null)
+		if (getWebDriver() != null)
 		{
 			try
 			{
 				// Shut down the webdriver
-				log.info("Webdriver teardown started.");
-				webDriver.quit();
-				webDriver = null;
+				getWebDriver().quit();
+				WebDriverManager.setWebDriver(null);
 				log.info("Webdriver teardown complete.");
 			}
 			catch (WebDriverException wde)

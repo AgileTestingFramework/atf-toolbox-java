@@ -3,11 +3,6 @@ package com.agiletestingframework.toolbox.managers;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecuteResultHandler;
 import org.apache.commons.exec.DefaultExecutor;
@@ -16,16 +11,27 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class MobileAutomationManager
 {
 
 	private static Logger log = LoggerFactory.getLogger(MobileAutomationManager.class);
 
-	private AppiumDriver mobileDriver;
+	/**
+	 * getWebDriver
+	 *
+	 * @return the local instance of the webDriver. will create new instance if
+	 *         one doesn't already exist to return.
+	 */
+	public AppiumDriver getMobileDriver() {
+		if (WebDriverManager.getDriver() == null) {
+			WebDriverManager.setWebDriver(startMobileDriver());
+		}
 
-	public AppiumDriver getMobileDriver()
-	{
-		return mobileDriver;
+		return ((AppiumDriver)WebDriverManager.getDriver());
 	}
 
 	public MobileAutomationManager()
@@ -35,8 +41,6 @@ public class MobileAutomationManager
 		{
 			startAppiumServer();
 		}
-
-		mobileDriver = startMobileDriver();
 	}
 
 	private AppiumDriver startMobileDriver()
@@ -238,7 +242,7 @@ public class MobileAutomationManager
 
 	public void teardown()
 	{
-		mobileDriver.quit();
+		getMobileDriver().quit();
 		if (ConfigurationManager.getInstance().getMobileAppiumStartNodeServer())
 		{
 			stopAppiumServer();

@@ -1,19 +1,12 @@
 package com.agiletestingframework.toolbox;
 
-import java.util.List;
-
+import com.agiletestingframework.toolbox.managers.*;
 import net.jsourcerer.webdriver.jserrorcollector.JavaScriptError;
-
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.agiletestingframework.toolbox.managers.ConfigurationManager;
-import com.agiletestingframework.toolbox.managers.DatabaseAutomationManager;
-import com.agiletestingframework.toolbox.managers.MobileAutomationManager;
-import com.agiletestingframework.toolbox.managers.ScreenImageAutomationManager;
-import com.agiletestingframework.toolbox.managers.WebAutomationManager;
-import com.agiletestingframework.toolbox.managers.WebServiceAutomationManager;
+import java.util.List;
 
 public class ATFHandler
 {
@@ -205,7 +198,7 @@ public class ATFHandler
 			}
 
 			webAutomationInstance.teardown();
-			webAutomationInstance = null;
+
 		}
 
 		if (webServiceAutomationInstance != null)
