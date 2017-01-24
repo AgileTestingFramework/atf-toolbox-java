@@ -5,3 +5,4 @@ target
 test-results
 .project
 .classpath
+/bin/
