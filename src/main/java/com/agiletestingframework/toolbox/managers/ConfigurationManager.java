@@ -518,6 +518,12 @@ public class ConfigurationManager {
         return getBooleanConfigEntry(key);
     }
 
+    // MICROSOFT EDGE
+    public String getMicrosoftEdgeVersion() {
+        String key = "atf/desired-capabilities/microsoft-edge/version";
+        return getStringEntry(key);
+    }
+
     // SAFARI
     public Boolean getSafariUseOptions() {
         String key = "atf/desired-capabilities/safari/use-options";

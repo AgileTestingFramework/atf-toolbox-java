@@ -176,6 +176,20 @@ public class WebAutomationManager
             }
 
         }
+        else if (browserName.toLowerCase().contains("microsoftedge"))
+        {
+            capabilities = DesiredCapabilities.edge();
+
+            String microsoftEdgeVersion = "13.10586";
+            if (ConfigurationManager.getInstance().getMicrosoftEdgeVersion() != null){
+                microsoftEdgeVersion = ConfigurationManager.getInstance().getMicrosoftEdgeVersion();
+            }
+
+            capabilities.setCapability("version", microsoftEdgeVersion);
+            capabilities.setCapability("platform", "Windows 10");
+            capabilities = setCommonCapabilities(capabilities);
+
+        }
         else if (browserName.toLowerCase().contains("safari"))
         {
 
