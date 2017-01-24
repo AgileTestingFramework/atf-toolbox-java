@@ -331,6 +331,21 @@ public class WebAutomationManager
             capabilities.setVersion(System.getenv("SELENIUM_VERSION"));
             capabilities.setCapability("platform", System.getenv("SELENIUM_PLATFORM"));
 
+            if (ConfigurationManager.getInstance().getSauceSuiteName() != null)
+            {
+                capabilities.setCapability("name",	ConfigurationManager.getInstance().getSauceSuiteName());
+            }
+            else {
+                if (System.getenv("SAUCE_JOB_NAME") != null){
+                    capabilities.setCapability("name", System.getenv("SAUCE_JOB_NAME"));
+                } else if (System.getProperty("SAUCE_JOB_NAME") != null){
+                    capabilities.setCapability("name", System.getProperty("SAUCE_JOB_NAME"));
+                } else {
+                    long currentTimeMillis = System.currentTimeMillis();
+                    capabilities.setCapability("name", String.format("ATF Job %s", currentTimeMillis));
+                }
+            }
+
             driver = new RemoteWebDriver(gridUrl, capabilities);
         }
 
