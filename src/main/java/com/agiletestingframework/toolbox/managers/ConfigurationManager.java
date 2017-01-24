@@ -296,6 +296,11 @@ public class ConfigurationManager {
         return getIntEntry(key);
     }
 
+    // SUACELABS
+    public String getSauceSuiteName() {
+        String key = "atf/desired-capabilities/sauce-suite-name";
+        return getStringEntry(key);
+    }
 
     // OPERA
     public String getOperaBinary() {
