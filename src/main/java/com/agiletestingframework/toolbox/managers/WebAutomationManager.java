@@ -423,4 +423,27 @@ public class WebAutomationManager
         }
     }
 
+    /**
+     * This method will close the current window in focus. It should be used to close
+     * a windows that is opened and currently has focus.
+     */
+    public void closeCurrentWindow()
+    {
+        if (getWebDriver() != null)
+        {
+            try
+            {
+                // Closes the current window in focus
+                log.info("Webdriver teardown started.");
+                // closes the current window in focus
+                getWebDriver().close();
+                log.info("Webdriver window close complete.");
+            }
+            catch (WebDriverException wde)
+            {
+                log.error("Error encountered during Webdriver window close.", wde);
+            }
+        }
+    }
+
 }
