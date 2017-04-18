@@ -1,7 +1,7 @@
 package com.agiletestingframework.toolbox.util;
 
 public class TestConstant {
-	// Delay and Wait Constants
+    // Delay and Wait Constants
     public static final int WAIT_SECONDS = 10;
     public static final int WAIT_SECONDS_TINY = WAIT_SECONDS / 5;
     public static final int WAIT_SECONDS_SHORT = WAIT_SECONDS / 2;
@@ -25,15 +25,15 @@ public class TestConstant {
     public static final String DOUBLE_QUOTE = "\"";
     public static final int FIRST_SELECT_ENTRY = 1;
     public static final int FIRST_LIST_ROW = 1;
-    
+
     // Default Data Constants
     public static final String DEFAULT_FIRST_NAME = "First";
     public static final String DEFAULT_LAST_NAME = "Last";
     public static final String DEFAULT_ALTERNATE_TEXT = "ALTERNATE_TEXT";
-    
+
     // Misc Constants
     public static final String PROP_CONFIG = "config";
-    
+
     // Other
     public static final String NONE = "NONE";
 

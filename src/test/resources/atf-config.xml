@@ -2,8 +2,8 @@
 <!-- test-config.xml -->
 <!-- Used for configuration of test environment -->
 <configuration>
-    <system />
-    <!--<xml fileName="sample-test-android-environment.xml"/> -->
-    <!--<xml fileName="sample-test-iphone-environment.xml"/>-->
-    <xml fileName="sample-test-environment.xml" />
+  <system />
+  <!--<xml fileName="sample-test-android-environment.xml"/> -->
+  <!--<xml fileName="sample-test-iphone-environment.xml"/> -->
+  <xml fileName="sample-test-environment.xml" />
 </configuration>

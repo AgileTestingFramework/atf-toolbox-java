@@ -3,171 +3,171 @@ package com.agiletestingframework.test.toolbox;
 // import static org.fest.assertions.api.Assertions.assertThat;
 public class ATFHandlerTest {
 
-	@Test
-	public void test() {
-		ClassLoader classLoader = getClass().getClassLoader();
+  @Test
+  public void test() {
+    ClassLoader classLoader = getClass().getClassLoader();
         try {
-        	File file = new File(classLoader.getResource("Eventbudget.pdf").getFile());
-			Desktop.getDesktop().open(file);
-			
-			//Thread.sleep(5000); // wait for the report to generate
-			
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
+          File file = new File(classLoader.getResource("Eventbudget.pdf").getFile());
+      Desktop.getDesktop().open(file);
+
+      //Thread.sleep(5000); // wait for the report to generate
+
+    } catch (IOException e) {
+
+      e.printStackTrace();
+    }
 
         File imagePatternFile = new File(classLoader.getResource("patterns/EventBudget_EstimatedPiePattern.PNG").getFile());
-        
+
         Target imageTarget = new ImageTarget(imagePatternFile);
-        
+
         ScreenRegion screenRegionToSearch = ATFHandler.getInstance().getScreenImageAutomation().getFullScreen().wait(imageTarget, 50000);
-        
+
         ATFHandler.getInstance().getScreenImageAutomation().saveBufferedImage("myfiletosave.png", screenRegionToSearch.capture());
-	}
-	
-	@Test
-	public void sikuliTest() throws IOException, InterruptedException {
-		ClassLoader classLoader = getClass().getClassLoader();
-		File file = new File(classLoader.getResource("Eventbudget.pdf")
-				.getFile());
-		Desktop.getDesktop().open(file);
+  }
 
-		// Define a screen region (default to the entire screen on the default
-		// monitor)
-		ScreenRegion fullScreen = new DesktopScreenRegion();
-		// Specify a target (in this case an image target based on a file)
-		File pattern = new File(classLoader.getResource(
-				"patterns/EventBudget_EstimatedPiePattern.PNG").getFile());
-		Target imageTarget = new ImageTarget(pattern);
-		Thread.sleep(20000);
-		// Invoke find()
-		ScreenRegion foundRegion = fullScreen.find(imageTarget);
+  @Test
+  public void sikuliTest() throws IOException, InterruptedException {
+    ClassLoader classLoader = getClass().getClassLoader();
+    File file = new File(classLoader.getResource("Eventbudget.pdf")
+        .getFile());
+    Desktop.getDesktop().open(file);
 
-		assertThat(foundRegion).isNotNull();
+    // Define a screen region (default to the entire screen on the default
+    // monitor)
+    ScreenRegion fullScreen = new DesktopScreenRegion();
+    // Specify a target (in this case an image target based on a file)
+    File pattern = new File(classLoader.getResource(
+        "patterns/EventBudget_EstimatedPiePattern.PNG").getFile());
+    Target imageTarget = new ImageTarget(pattern);
+    Thread.sleep(20000);
+    // Invoke find()
+    ScreenRegion foundRegion = fullScreen.find(imageTarget);
 
-	}
+    assertThat(foundRegion).isNotNull();
 
-	@Test
-	public void SelectDataTest() throws SQLException {
-		Table tblCandy = new Table("CANDY");
-		SelectQuery selectStmnt = new SelectQuery();
-		selectStmnt.addToSelection(tblCandy.getWildcard());
-		selectStmnt.addCriteria(new MatchCriteria(tblCandy, "CURRENT_QUANTITY",
-				MatchCriteria.GREATER, 700));
-		selectStmnt.addOrder(tblCandy, "CANDY_NAME", Order.ASCENDING);
+  }
 
-		List<Map<String, Object>> results = ATFHandler.getInstance()
-				.getDatabaseAutomation().selectData(selectStmnt);
+  @Test
+  public void SelectDataTest() throws SQLException {
+    Table tblCandy = new Table("CANDY");
+    SelectQuery selectStmnt = new SelectQuery();
+    selectStmnt.addToSelection(tblCandy.getWildcard());
+    selectStmnt.addCriteria(new MatchCriteria(tblCandy, "CURRENT_QUANTITY",
+        MatchCriteria.GREATER, 700));
+    selectStmnt.addOrder(tblCandy, "CANDY_NAME", Order.ASCENDING);
 
-		assertThat(results.size()).isEqualTo(3);
+    List<Map<String, Object>> results = ATFHandler.getInstance()
+        .getDatabaseAutomation().selectData(selectStmnt);
 
-		// Assert the first row result is Mars only
-		for (Map<String, Object> row : results) {
-			assertThat(row).contains(entry("CANDY_NAME", "Mars"));
+    assertThat(results.size()).isEqualTo(3);
 
-			// Loop on specifc column within the row
-			for (Map.Entry<String, Object> column : row.entrySet()) {
-				// Assert something here
-			}
+    // Assert the first row result is Mars only
+    for (Map<String, Object> row : results) {
+      assertThat(row).contains(entry("CANDY_NAME", "Mars"));
 
-			// look at a specific column within the row
-			assertThat(Double.parseDouble(row.get("CANDY_PRICE").toString()))
-					.isEqualTo(.65);
-			break;
-		}
-	}
+      // Loop on specifc column within the row
+      for (Map.Entry<String, Object> column : row.entrySet()) {
+        // Assert something here
+      }
 
-	private static String testDataFilename = "sample-xml-test-data.xml";
+      // look at a specific column within the row
+      assertThat(Double.parseDouble(row.get("CANDY_PRICE").toString()))
+          .isEqualTo(.65);
+      break;
+    }
+  }
 
-	@DataProvider(name = "AddTwoNumbers")
-	public static Object[][] AdditionData() {
-		String id = "Test Case: Add 2 Numbers";
-		TestDataProvider tdp = new TestDataProvider();
+  private static String testDataFilename = "sample-xml-test-data.xml";
 
-		return tdp.Initialize(new XMLDataDriver(testDataFilename, id));
-	}
+  @DataProvider(name = "AddTwoNumbers")
+  public static Object[][] AdditionData() {
+    String id = "Test Case: Add 2 Numbers";
+    TestDataProvider tdp = new TestDataProvider();
 
-	@Test(dataProvider = "AddTwoNumbers")
-	public void AddTwoNumbers(ScenarioData scenario) {
-		int num1 = scenario.getIntParameterData("firstNumber");
-		int num2 = scenario.getIntParameterData("secondNumber");
-		int expectedResult = scenario.getIntParameterData("expectedSum");
+    return tdp.Initialize(new XMLDataDriver(testDataFilename, id));
+  }
 
-		assertThat((num1 + num2)).isEqualTo(expectedResult);
-	}
+  @Test(dataProvider = "AddTwoNumbers")
+  public void AddTwoNumbers(ScenarioData scenario) {
+    int num1 = scenario.getIntParameterData("firstNumber");
+    int num2 = scenario.getIntParameterData("secondNumber");
+    int expectedResult = scenario.getIntParameterData("expectedSum");
 
-	@Test
-	public void DBTest() {
-		List<String> tables = ATFHandler.getInstance().getDatabaseAutomation()
-				.getTables();
-		assertThat(tables)
-				.hasSize(4)
-				.containsOnly("CANDY", "CANDY_ORDER", "CANDY_ORDER_LINE",
-						"CONTACT").doesNotContain("Z_CANDY");
+    assertThat((num1 + num2)).isEqualTo(expectedResult);
+  }
 
-		Map<String, Integer> columnAndTypes = ATFHandler.getInstance()
-				.getDatabaseAutomation().getColumnsAndTypes("CANDY");
-		assertThat(columnAndTypes).hasSize(7).contains(
-				entry("ID", Types.BIGINT));
-	}
+  @Test
+  public void DBTest() {
+    List<String> tables = ATFHandler.getInstance().getDatabaseAutomation()
+        .getTables();
+    assertThat(tables)
+        .hasSize(4)
+        .containsOnly("CANDY", "CANDY_ORDER", "CANDY_ORDER_LINE",
+            "CONTACT").doesNotContain("Z_CANDY");
 
-	@Test
-	@Ignore
-	public void ATFHandlerIsSingleton() {
-		ATFHandler handler1 = ATFHandler.getInstance();
-		ATFHandler handler2 = ATFHandler.getInstance();
+    Map<String, Integer> columnAndTypes = ATFHandler.getInstance()
+        .getDatabaseAutomation().getColumnsAndTypes("CANDY");
+    assertThat(columnAndTypes).hasSize(7).contains(
+        entry("ID", Types.BIGINT));
+  }
 
-		assertThat(handler1).isSameAs(handler2);
-	}
+  @Test
+  @Ignore
+  public void ATFHandlerIsSingleton() {
+    ATFHandler handler1 = ATFHandler.getInstance();
+    ATFHandler handler2 = ATFHandler.getInstance();
 
-	@Test
-	@Ignore
-	public void WebAutomationIsSingleton() {
-		WebAutomationManager webAutomation1 = ATFHandler.getInstance()
-				.getWebAutomation();
-		WebAutomationManager webAutomation2 = ATFHandler.getInstance()
-				.getWebAutomation();
+    assertThat(handler1).isSameAs(handler2);
+  }
 
-		assertThat(webAutomation1).isSameAs(webAutomation2);
-	}
+  @Test
+  @Ignore
+  public void WebAutomationIsSingleton() {
+    WebAutomationManager webAutomation1 = ATFHandler.getInstance()
+        .getWebAutomation();
+    WebAutomationManager webAutomation2 = ATFHandler.getInstance()
+        .getWebAutomation();
 
-	@Test
-	public void ShouldAppiumServerStart() {
-		ATFHandler.getInstance().getMobileAutomation();
-		ATFHandler.getInstance().teardown();
-	}
+    assertThat(webAutomation1).isSameAs(webAutomation2);
+  }
 
-	@Test
-	public void runMobileTest() {
-		String tooLongName = "AbcdefgHijklmnoPqrstuvWxyz";
-		String expectedFirstName = "AbcdefgHijklmnoPqrstuvWxy";
+  @Test
+  public void ShouldAppiumServerStart() {
+    ATFHandler.getInstance().getMobileAutomation();
+    ATFHandler.getInstance().teardown();
+  }
 
-		ATFHandler.getInstance().getMobileAutomation();
+  @Test
+  public void runMobileTest() {
+    String tooLongName = "AbcdefgHijklmnoPqrstuvWxyz";
+    String expectedFirstName = "AbcdefgHijklmnoPqrstuvWxy";
 
-		AppiumDriver appiumDriver = ATFHandler.getInstance()
-				.getMobileAutomation().getMobileDriver();
+    ATFHandler.getInstance().getMobileAutomation();
 
-		appiumDriver.navigate().to(
-				"http://store.agiletestingframework.com/candystore/contact");
+    AppiumDriver appiumDriver = ATFHandler.getInstance()
+        .getMobileAutomation().getMobileDriver();
 
-		WebElement element = appiumDriver.findElement(By.id("txtFirstName"));
-		element.sendKeys(tooLongName);
-		element = appiumDriver.findElement(By.id("txtFirstName"));
+    appiumDriver.navigate().to(
+        "http://store.agiletestingframework.com/candystore/contact");
 
-		String actualFirstName = element.getAttribute("value");
+    WebElement element = appiumDriver.findElement(By.id("txtFirstName"));
+    element.sendKeys(tooLongName);
+    element = appiumDriver.findElement(By.id("txtFirstName"));
 
-		assertThat(actualFirstName.length()).isEqualTo(25);
-		assertThat(actualFirstName).isEqualTo(expectedFirstName);
+    String actualFirstName = element.getAttribute("value");
 
-		ATFHandler.getInstance().teardown();
-	}
+    assertThat(actualFirstName.length()).isEqualTo(25);
+    assertThat(actualFirstName).isEqualTo(expectedFirstName);
 
-	  @Test
-	  public void LoadConfiguration()
-	  {
-		  Configuration config = ConfigurationManager.getInstance().AllConfiguration;
-		  
-		  assertThat(config).isNotNull();
-	  }
+    ATFHandler.getInstance().teardown();
+  }
+
+    @Test
+    public void LoadConfiguration()
+    {
+      Configuration config = ConfigurationManager.getInstance().AllConfiguration;
+
+      assertThat(config).isNotNull();
+    }
 }

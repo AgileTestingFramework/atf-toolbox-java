@@ -97,8 +97,6 @@ public class StringUtil {
         return StringUtils.substring(prefixString + UUID.randomUUID().toString(), start, end);
     }
 
-
-
     public static String randomPhone() {
         Random random = new Random(System.currentTimeMillis());
         String firstNum = String.valueOf(random.nextInt(9));
@@ -107,9 +105,15 @@ public class StringUtil {
     }
 
     /**
-     * <p>Generates a unique string not longer than a max length.</p>
-     * @param prefixString Prepended to the generated unique string
-     * @param maxLength Generated string is guaranteed not to be longer than this max length.
+     * <p>
+     * Generates a unique string not longer than a max length.
+     * </p>
+     * 
+     * @param prefixString
+     *            Prepended to the generated unique string
+     * @param maxLength
+     *            Generated string is guaranteed not to be longer than this max
+     *            length.
      * @return - unique string
      */
     public static String uniqueString(String prefixString, int maxLength) {
@@ -117,8 +121,12 @@ public class StringUtil {
     }
 
     /**
-     * <p>Generates a unique string.</p>
-     * @param prefixString Prepended to the generated unique string
+     * <p>
+     * Generates a unique string.
+     * </p>
+     * 
+     * @param prefixString
+     *            Prepended to the generated unique string
      * @return - unique string
      */
     public static String uniqueString(String prefixString) {
@@ -127,8 +135,8 @@ public class StringUtil {
 
     /**
      * <p>
-     * Generates a unique string and appends to your prefix. Then substrings this
-     * new string according to the int parameters.
+     * Generates a unique string and appends to your prefix. Then substrings
+     * this new string according to the int parameters.
      * </p>
      *
      * @param prefixString
@@ -145,6 +153,7 @@ public class StringUtil {
 
     /**
      * Creates a name looking something like "Tbxau Pdsaddwe".
+     * 
      * @return - random name
      */
     public static String randomName() {
@@ -157,6 +166,7 @@ public class StringUtil {
 
     /**
      * Creates a name looking something like "Tbxau_Pdsaddwe@example.com".
+     * 
      * @return - random email
      */
     public static String randomEmail() {
@@ -170,7 +180,9 @@ public class StringUtil {
 
     /**
      * Creates an alpha word looking something like "Tbxau".
-     * @param length - of generated string.
+     * 
+     * @param length
+     *            - of generated string.
      * @return - random alpha word
      */
     public static String randomAlphaWord(int length) {
@@ -185,13 +197,16 @@ public class StringUtil {
         // a = 97, z = 122
         // for reference:
         // https://en.wikipedia.org/wiki/ASCII#ASCII_printable_code_chart
-        return (char)randomInt(97, 122);
+        return (char) randomInt(97, 122);
     }
 
     /**
      * Returns a random integer within (inclusive) the given range.
-     * @param min inclusive
-     * @param max inclusive
+     * 
+     * @param min
+     *            inclusive
+     * @param max
+     *            inclusive
      * @return - random int
      */
     public static int randomInt(int min, int max) {
