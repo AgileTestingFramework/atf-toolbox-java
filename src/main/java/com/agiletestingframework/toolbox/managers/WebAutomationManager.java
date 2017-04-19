@@ -234,7 +234,7 @@ public class WebAutomationManager {
                 }
             }
         } else if (browserName.toLowerCase().contains("opera")) {
-            capabilities = DesiredCapabilities.opera();
+            capabilities = DesiredCapabilities.operaBlink();
 
             capabilities = setCommonCapabilities(capabilities);
 
