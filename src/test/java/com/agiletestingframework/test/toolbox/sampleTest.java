@@ -7,6 +7,7 @@ import com.agiletestingframework.toolbox.ATFHandler;
 /**
  * Created by kvarona on 5/17/2016.
  */
+@SuppressWarnings("unused")
 public class sampleTest {
 
     @Test
