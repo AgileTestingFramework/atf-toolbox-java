@@ -357,6 +357,9 @@ public class WebAutomationManager {
             capabilities.setBrowserName(System.getenv("SELENIUM_BROWSER"));
             capabilities.setVersion(System.getenv("SELENIUM_VERSION"));
             capabilities.setCapability("platform", System.getenv("SELENIUM_PLATFORM"));
+            if (ConfigurationManager.getInstance().getSauceTunnelIdentifier() != null) {
+                capabilities.setCapability("tunnelIdentifier", ConfigurationManager.getInstance().getSauceTunnelIdentifier());
+            }
 
             if (ConfigurationManager.getInstance().getSauceSuiteName() != null) {
                 capabilities.setCapability("name", ConfigurationManager.getInstance().getSauceSuiteName());

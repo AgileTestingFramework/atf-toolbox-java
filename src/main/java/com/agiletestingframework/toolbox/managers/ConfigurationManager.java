@@ -78,7 +78,7 @@ public class ConfigurationManager {
 
     /**
      * getBooleanConfigEntry
-     * 
+     *
      * @param xPathKey
      *            - Key in XPath format to locate in loaded config file
      * @return - Boolean entry from config file. Will return false if not found.
@@ -96,7 +96,7 @@ public class ConfigurationManager {
 
     /**
      * getListEntry
-     * 
+     *
      * @param xPathKey
      *            key name to use
      * @return List of strings. Will return empty List&lt;string&gt; if not
@@ -114,7 +114,7 @@ public class ConfigurationManager {
 
     /**
      * getStringEntry
-     * 
+     *
      * @param xPathKey
      *            - Key in XPath format to locate in loaded config file
      * @return - String entry from config file. Will return empty string if not
@@ -134,7 +134,7 @@ public class ConfigurationManager {
 
     /**
      * getIntEntry
-     * 
+     *
      * @param xPathKey
      *            - Key in XPath format to locate in loaded config file
      * @return - integer entry from config file. Will return 0 if not found.
@@ -325,6 +325,10 @@ public class ConfigurationManager {
     // SUACELABS
     public String getSauceSuiteName() {
         String key = "atf/desired-capabilities/sauce-suite-name";
+        return getStringEntry(key);
+    }
+    public String getSauceTunnelIdentifier() {
+        String key = "atf/desired-capabilities/sauce-tunnel-identifier";
         return getStringEntry(key);
     }
 

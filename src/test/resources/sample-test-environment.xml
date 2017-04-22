@@ -42,9 +42,10 @@
 
       <grid-use>true</grid-use>
       <!-- Using Saucelabs -->
-      <grid-url>http://kristen-varona:8dfb75f7-40cb-4ff0-8137-816b6986e657@ondemand.saucelabs.com:80/wd/hub</grid-url>
+      <grid-url>http://[user]:[api-key]@ondemand.saucelabs.com:80/wd/hub</grid-url>
       <grid-selenium-protocol></grid-selenium-protocol>
       <grid-max-instances></grid-max-instances>
+      <sauce-tunnel-identifier></sauce-tunnel-identifier>
       <phantomjs>
         <executable-path-property></executable-path-property>
         <page-settings-prefix></page-settings-prefix>
