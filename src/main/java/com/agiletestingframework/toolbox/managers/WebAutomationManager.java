@@ -86,6 +86,11 @@ public class WebAutomationManager {
 
             capabilities = setCommonCapabilities(capabilities);
 
+            if (ConfigurationManager.getInstance().getGekoDriverPath() != null) {
+                System.setProperty("webdriver.gecko.driver", new File(ConfigurationManager.getInstance().getGekoDriverPath()).getAbsolutePath());
+                capabilities.setCapability("marionette", true);
+            }
+
             FirefoxBinary binary = null;
             File binaryFile = null;
             if (ConfigurationManager.getInstance().getWebBrowserDownloadPath().length() > 0) {

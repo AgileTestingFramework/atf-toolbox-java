@@ -435,6 +435,11 @@ public class ConfigurationManager {
         return getStringEntry(key);
     }
 
+    public String getGekoDriverPath() {
+        String key = "atf/desired-capabilities/firefox/gecko-driver-path";
+        return getStringEntry(key);
+    }
+
     public String getFirefoxBinary() {
         String key = "atf/desired-capabilities/firefox/binary";
         return getStringEntry(key);

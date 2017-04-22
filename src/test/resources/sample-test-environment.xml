@@ -84,6 +84,7 @@
         <profile-dir-and-filename></profile-dir-and-filename>
         <logging-prefs></logging-prefs>
         <binary></binary>
+        <gecko-driver-path></gecko-driver-path>
         <rc-mode></rc-mode>
         <rc-capture-network-traffic></rc-capture-network-traffic>
         <rc-add-custom-request-header></rc-add-custom-request-header>
