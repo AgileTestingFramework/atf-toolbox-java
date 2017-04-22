@@ -1,6 +1,7 @@
 # Change Log
 
 **5.0.5**
+- Removed sqlsheet dependency while we wait for new version to be published. This will prevent you from using Excel spreadsheet as a data source. We are working on resolving the issue soon.
 - Added setting "webdriver.gecko.driver" with value from "atf/desired-capabilities/firefox/gecko-driver-path" in environment xml
 - Added setting tunnelIdentifier with value from "atf/desired-capabilities/firefox/gecko-driver-path" in environment xml
 - Added .editorconfig and atf-eclipse-format.xml to help enforce style guidelines
