@@ -63,7 +63,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <selenium.version>3.0.1</selenium.version>
     <appium.version>2.0.0</appium.version>
-    <fest.version>2.0M10</fest.version>
+    <assertj.version>3.6.2</assertj.version>
     <phantomjsdriver.version>1.2.0</phantomjsdriver.version>
     <rest.assured.version>2.4.1</rest.assured.version>
     <jbehave.version>3.9.5</jbehave.version>
@@ -137,9 +137,9 @@
       <version>2.2.0</version>
     </dependency>
     <dependency>
-      <groupId>org.easytesting</groupId>
-      <artifactId>fest-assert-core</artifactId>
-      <version>${fest.version}</version>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
     </dependency>
     <dependency>
       <groupId>javax.ws.rs</groupId>

@@ -1,6 +1,6 @@
 package com.agiletestingframework.test.toolbox;
 
-import static org.fest.assertions.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;

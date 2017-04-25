@@ -9,7 +9,7 @@ import org.apache.commons.configuration.DefaultConfigurationBuilder;
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.tree.xpath.XPathExpressionEngine;
 import org.apache.commons.lang3.StringUtils;
-import org.fest.assertions.api.Fail;
+import org.assertj.core.api.Fail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
