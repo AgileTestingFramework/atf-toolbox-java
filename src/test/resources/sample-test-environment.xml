@@ -45,7 +45,9 @@
       <grid-url>http://[user]:[api-key]@ondemand.saucelabs.com:80/wd/hub</grid-url>
       <grid-selenium-protocol></grid-selenium-protocol>
       <grid-max-instances></grid-max-instances>
+      <!-- https://wiki.saucelabs.com/display/DOCS/Test+Configuration+Options -->
       <sauce-tunnel-identifier></sauce-tunnel-identifier>
+      <sauce-screen-resolution></sauce-screen-resolution>
       <phantomjs>
         <executable-path-property></executable-path-property>
         <page-settings-prefix></page-settings-prefix>

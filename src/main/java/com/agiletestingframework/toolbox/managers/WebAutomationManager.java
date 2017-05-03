@@ -365,6 +365,9 @@ public class WebAutomationManager {
             if (ConfigurationManager.getInstance().getSauceTunnelIdentifier() != null) {
                 capabilities.setCapability("tunnelIdentifier", ConfigurationManager.getInstance().getSauceTunnelIdentifier());
             }
+            if (ConfigurationManager.getInstance().getSauceScreenResolution() != null) {
+                capabilities.setCapability("screenResolution", ConfigurationManager.getInstance().getSauceScreenResolution());
+            }
 
             if (ConfigurationManager.getInstance().getSauceSuiteName() != null) {
                 capabilities.setCapability("name", ConfigurationManager.getInstance().getSauceSuiteName());

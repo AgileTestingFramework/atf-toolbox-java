@@ -327,8 +327,14 @@ public class ConfigurationManager {
         String key = "atf/desired-capabilities/sauce-suite-name";
         return getStringEntry(key);
     }
+
     public String getSauceTunnelIdentifier() {
         String key = "atf/desired-capabilities/sauce-tunnel-identifier";
+        return getStringEntry(key);
+    }
+
+    public String getSauceScreenResolution() {
+        String key = "atf/desired-capabilities/sauce-screen-resolution";
         return getStringEntry(key);
     }
 
