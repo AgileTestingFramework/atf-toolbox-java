@@ -3,7 +3,7 @@
 
   <groupId>com.agiletestingframework</groupId>
   <artifactId>atf-toolbox</artifactId>
-  <version>5.0.5-SNAPSHOT</version>
+  <version>5.0.5</version>
 
   <name>Agile Testing Framework Toolbox</name>
   <description>Automation Testing Framework Toolbox Provides simple automation.</description>
@@ -43,7 +43,7 @@
     <connection>scm:git:git://github.com/AgileTestingFramework/atf-toolbox-java.git</connection>
     <developerConnection>scm:git:git@github.com:AgileTestingFramework/atf-toolbox-java.git</developerConnection>
     <url>http://github.com/AgileTestingFramework/atf-toolbox-java/tree/master</url>
-    <tag>HEAD</tag>
+    <tag>atf-toolbox-5.0.5</tag>
   </scm>
   <distributionManagement>
     <snapshotRepository>
