@@ -34,7 +34,7 @@ public class DataDriverTest {
         atfTestDataProvider = new TestDataProvider();
     }
 
-    @Test(enabled=false, dataProvider = "AddTwoNumbersEXCEL", groups = { "datainjection" } )
+    @Test(dataProvider = "AddTwoNumbersEXCEL", groups = { "datainjection" } )
     public void addTwoNumbersEXCEL(ScenarioData scenario) {
 
         int num1 = scenario.getIntParameterData("firstNumber");
