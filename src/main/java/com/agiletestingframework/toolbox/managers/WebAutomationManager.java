@@ -279,7 +279,7 @@ public class WebAutomationManager {
             }
 
         } else if (browserName.toLowerCase().contains("htmlunitdriver")) {
-            capabilities = DesiredCapabilities.htmlUnitWithJs();
+            capabilities = DesiredCapabilities.htmlUnit();
 
             capabilities = setCommonCapabilities(capabilities);
 
