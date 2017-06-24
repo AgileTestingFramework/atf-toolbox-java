@@ -131,6 +131,12 @@
       <artifactId>phantomjsdriver</artifactId>
       <version>${phantomjsdriver.version}</version>
     </dependency>
+    <!-- WebDriver locators and more for AngularJS -->
+    <dependency>
+        <groupId>com.paulhammant</groupId>
+        <artifactId>ngwebdriver</artifactId>
+        <version>1.0</version>
+    </dependency>
     <dependency>
       <groupId>io.appium</groupId>
       <artifactId>java-client</artifactId>

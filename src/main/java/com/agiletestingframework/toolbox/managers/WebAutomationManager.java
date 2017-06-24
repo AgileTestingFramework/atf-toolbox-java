@@ -2,6 +2,8 @@ package com.agiletestingframework.toolbox.managers;
 
 import com.agiletestingframework.toolbox.util.TestConstant;
 import com.opera.core.systems.OperaDriver;
+import com.paulhammant.ngwebdriver.NgWebDriver;
+
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver.Timeouts;
@@ -45,6 +47,17 @@ public class WebAutomationManager {
         }
 
         return WebDriverManager.getDriver();
+    }
+
+    /**
+     * getNgWebDriver
+     *
+     * @return the local instance of the webDriver wrapped in an instance of NgWebDriver. will create new instance if
+     *         one doesn't already exist to return.
+     */
+    public NgWebDriver getNgWebDriver() {
+        NgWebDriver answer = new NgWebDriver((JavascriptExecutor)getWebDriver());
+        return answer;
     }
 
     private TakesScreenshot takesScreenshot;
