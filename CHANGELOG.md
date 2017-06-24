@@ -1,5 +1,11 @@
 # Change Log
 
+**5.1.0**
+- Changed Selenium Version to 3.4.0
+- Changed sqlsheet to version 6.7, this fixes the issue we with addTwoNumbersEXCEL
+- Removed jbehave, was unused
+- Added NgWebDriver and JSoup to project
+
 **5.0.5**
 - Added ability to set Sauce Screen Resolution
 - Removed sqlsheet dependency while we wait for new version to be published. This will prevent you from using Excel spreadsheet as a data source. We are working on resolving the issue soon.
