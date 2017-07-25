@@ -169,6 +169,24 @@ public class ConfigurationManager {
     }
 
     // ****************************************************************************//
+    // *********** ZAP SECURITY SCANNING
+    // ****************************************************************************//
+    public String getZapProxyHost() {
+        String key = "atf/zap/proxy-host";
+        return getStringEntry(key);
+    }
+
+    public Integer getZapProxyPort() {
+        String key = "atf/zap/proxy-port";
+        return getIntEntry(key);
+    }
+
+    public String getZapApiKey() {
+        String key = "atf/zap/api-key";
+        return getStringEntry(key);
+    }
+
+    // ****************************************************************************//
     // *********** DESIRED
     // CAPABILITIES********************************************//
     // ****************************************************************************//

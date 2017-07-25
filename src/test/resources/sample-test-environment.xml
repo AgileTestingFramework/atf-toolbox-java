@@ -7,7 +7,19 @@
       <base-url>http://store.agiletestingframework.com:8080/candystore/
       </base-url>
     </web>
-
+    <!-- For use with ZAP Security testing -->
+    <!--
+    <zap>
+      <proxy-host>localhost</proxy-host>
+      <proxy-port>7070</proxy-port>
+      <api-key></api-key>
+    </zap>
+    -->
+    <zap>
+      <proxy-host></proxy-host>
+      <proxy-port></proxy-port>
+      <api-key></api-key>
+    </zap>
     <desired-capabilities>
       <browser-name>firefox</browser-name>
       <browser-version>31.0</browser-version>
