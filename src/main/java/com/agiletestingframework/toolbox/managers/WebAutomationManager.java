@@ -17,6 +17,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -77,7 +78,7 @@ public class WebAutomationManager {
      */
     private WebDriver webDriverSetup() {
         WebDriver driver = null;
-
+        Proxy proxy = null;
         // SETUP Common Capabilities
         // Configure Candidate Browser Information
         String browserName = ConfigurationManager.getInstance().getWebBrowserName();
@@ -91,8 +92,23 @@ public class WebAutomationManager {
         if (StringUtils.isBlank(platform)) {
             platform = Platform.ANY.toString();
         }
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
+
+        String zapProxyHost = ConfigurationManager.getInstance().getZapProxyHost();
+        Integer zapProxyPort =  ConfigurationManager.getInstance().getZapProxyPort();
+        if (zapProxyPort == null) {
+            zapProxyPort = 7070;
+        }
+
+        if (StringUtils.isNotBlank(zapProxyHost)){
+            proxy = new Proxy();
+            proxy.setHttpProxy(zapProxyHost + ":" + zapProxyPort);
+            proxy.setSslProxy(zapProxyHost + ":" + zapProxyPort);
+        }
+
+        if (proxy != null) {
+            capabilities.setCapability("proxy", proxy);
+        }
 
         if (browserName.toLowerCase().contains("firefox")) {
             capabilities = DesiredCapabilities.firefox();
@@ -153,6 +169,7 @@ public class WebAutomationManager {
                 capabilities.setCapability("trustAllSSLCertificates", ConfigurationManager.getInstance());
 
             if (ConfigurationManager.getInstance().getUseGrid() != null && !ConfigurationManager.getInstance().getUseGrid()) {
+                // NOTE: We can remove this way after gekodriver becomes the one true way
                 driver = new FirefoxDriver(binary, profile, capabilities);
             }
 
@@ -322,10 +339,12 @@ public class WebAutomationManager {
             }
             capabilities.setCapability(ChromeOptions.CAPABILITY, options);
 
-            if (ConfigurationManager.getInstance().getChromeProxy().length() > 0) {
-                Proxy proxy = new Proxy();
-                proxy.setHttpProxy(ConfigurationManager.getInstance().getChromeProxy());
-                capabilities.setCapability("proxy", proxy);
+            // Zap Proxy may already be created and we should use that
+            if (proxy == null) {
+                if (ConfigurationManager.getInstance().getChromeProxy().length() > 0) {
+                    proxy = new Proxy();
+                    proxy.setHttpProxy(ConfigurationManager.getInstance().getChromeProxy());
+                }
             }
 
             if (ConfigurationManager.getInstance().getUseGrid() != null && !ConfigurationManager.getInstance().getUseGrid()) {
