@@ -1,4 +1,11 @@
 # Change Log
+**5.1.3**
+- Added ZAP Webdriver classes to support security testing samples
+-- Added configuring a ZAP proxy to WebDriver creation
+- Added deploy profile to pom.xml, so 'mvn clean install' does not prompt for pgp key
+
+**5.1.2**
+- Added cucumber dependency
 
 **5.1.0**
 - Changed Selenium Version to 3.4.0
