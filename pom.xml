@@ -272,6 +272,23 @@
       <artifactId>cucumber-java8</artifactId>
       <version>1.2.5</version>
 	</dependency>
+
+    <!-- ZAP Webdriver Security testing -->
+    <dependency>
+      <groupId>org.zaproxy</groupId>
+      <artifactId>zap-clientapi</artifactId>
+      <version>1.2.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.zaproxy</groupId>
+      <artifactId>zap</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>1.9.12</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
